@@ -67,7 +67,7 @@ body {
   display: flex;
   justify-content: start;
   align-items: center;
-  margin-top: 10px;
+  /* margin-top: 10px; */
   font-weight: bold;
 }
 
@@ -116,6 +116,7 @@ body {
 
 .head {
   display: flex;
+  margin-bottom: 10px;
 }
 
 .back {
@@ -161,7 +162,7 @@ body {
 .firstbox {
   background-position: center !important;
   margin: 3px;
-  background-size: contain !important;
+  background-size: cover !important;
   color: lightyellow;
   width: 100%;
 }

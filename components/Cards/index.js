@@ -68,7 +68,7 @@ function Cards() {
       (item) => item.category
     ) || [];
   let uniqueCategories = [...new Set(categories)];
-  // console.log(uniqueCategories)
+  console.log(uniqueCategories);
   const MemoizedMainSlider = useMemo(() => <NewMainSlider />, []);
   const MemoizedProfileContent = useMemo(() => <Profile />, []);
   const MemoizedTrendingProducts = useMemo(() => <Trending />, []);
@@ -101,7 +101,7 @@ function Cards() {
       <Multicard />
       {/* <Image /> */}
 
-      {/* {uniqueCategories?.map((item, index) => (
+      {uniqueCategories?.map((item, index) => (
         <Dataslider
           key={item}
           category={item}
@@ -109,9 +109,7 @@ function Cards() {
           data={Partdata(item)}
           ref={datasliderRefs.current[index]}
         />
-      ))} */}
-
-      <Trending />
+      ))}
       <div className="w-full sm:px-[50px] px-[20px] py-20  h-auto">
         {/* <Imagechanger /> */}
       </div>

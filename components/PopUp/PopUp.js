@@ -91,8 +91,8 @@ function App() {
   };
 
   const goTo2 = () => {
-    setOpenPopUp3(false);
-    setOpenPopUp2(true);
+    setOpenPopUp2(false);
+    setOpenPopUp1(true);
   };
 
   const toggleItemSelection1 = (label, parentCategory) => {
@@ -395,7 +395,15 @@ function App() {
             <div className="flex-grow basis-1/6 sm:text-lg text-base sm:font-bold font-medium">
               Select according to your choice
             </div>
-            <p className="text mb-4 images2">Cities</p>
+            <div className="head images3">
+              <img
+                src="/images/back.webp"
+                className="back"
+                onClick={goTo2}
+                alt="Back"
+              />
+              <p className="text">Last Step! Choose your subcategories</p>
+            </div>
             <div className="grid grid-cols-3 gap-x-4 basis-4/6 overflow-auto overflow-x-hidden flex-grow ">
               {fetchCities &&
                 fetchCities.map((city, index) => (
@@ -406,8 +414,8 @@ function App() {
                       }`}
                       onClick={() => toggleItemSelection2(city)}
                       style={{
-                        background: `url('${city.img}')`,
-                        backgroundSize: "center",
+                        backgroundImage: `url('${city.img}')`,
+                        backgroundSize: "cover",
                       }}
                     >
                       <Image
@@ -424,62 +432,6 @@ function App() {
                   </React.Fragment>
                 ))}
             </div>
-            <div className="flex-grow basis-1/6">
-              <button className="next" onClick={goTo}>
-                Next
-              </button>
-            </div>
-          </div>
-          {/* <div className="w-[600px] p-2 pl-6 fixed-button"></div> */}
-        </div>
-      )}
-      {openPopUp3 && (
-        <div className="popup1 flex flex-col">
-          <div className="cont1">
-            <div className="flex-grow basis-1/6 sm:text-lg text-base sm:font-bold font-medium">
-              Select according to your choice
-            </div>
-            <div className="head images3">
-              <img
-                src="/images/back.webp"
-                className="back"
-                onClick={goTo2}
-                alt="Back"
-              />
-              <p className="text">Last Step! Choose your hobbies</p>
-            </div>
-            {openPopUp3 && (
-              <>
-                <p className="text mb-4">Hobbies</p>
-                <div className="grid grid-cols-3 gap-x-4 basis-4/6 overflow-auto overflow-x-hidden flex-grow">
-                  {fetchHobbies &&
-                    fetchHobbies.map((hobbie, index) => (
-                      <div
-                        className={`box firstbox ${
-                          selectedItems3.includes(hobbie) ? "selected" : ""
-                        }`}
-                        onClick={() => toggleItemSelection3(hobbie)}
-                        style={{
-                          background: `url('${hobbie.img}')`,
-                          backgroundSize: "center",
-                        }}
-                        key={index}
-                      >
-                        <Image
-                          src="/svg/icon/tick.svg"
-                          height={20}
-                          width={20}
-                          alt="close"
-                          className={`absolute tickicon ${
-                            selectedItems3.includes(hobbie) ? "block" : "hidden"
-                          }`}
-                        />
-                        <b className="bel">{hobbie.name}</b>
-                      </div>
-                    ))}
-                </div>
-              </>
-            )}
             <div className="flex-grow basis-1/6">
               <button
                 className={`next self-end mt-6 
