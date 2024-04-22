@@ -13,7 +13,9 @@ import Image from "next/image";
 const Tabs = ({ data }) => {
   const router = useRouter();
 
-  const [activeTab, setActiveTab] = useState(data?.recommendations?.[0]?.recommendedProducts[0]?.roomCategory[0].toLowerCase());
+  const [activeTab, setActiveTab] = useState(
+    data?.recommendations?.[0]?.recommendedProducts[0]?.roomCategory[0].toLowerCase()
+  );
   const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
@@ -35,8 +37,10 @@ const Tabs = ({ data }) => {
     };
   }, []);
 
-  const recommendedProducts = data?.recommendations?.flatMap(recommendation =>
-    recommendation.recommendedProducts.flatMap(product => product.roomCategory)
+  const recommendedProducts = data?.recommendations?.flatMap((recommendation) =>
+    recommendation.recommendedProducts.flatMap(
+      (product) => product.roomCategory
+    )
   );
 
   const uniqueRoomCategories = [...new Set(recommendedProducts)];
@@ -45,7 +49,9 @@ const Tabs = ({ data }) => {
   const tabImages = {};
 
   uniqueRoomCategories?.forEach((category) => {
-    const product = data?.recommendations?.[0]?.recommendedProducts.find((item) => item.roomCategory.includes(category));
+    const product = data?.recommendations?.[0]?.recommendedProducts.find(
+      (item) => item.roomCategory.includes(category)
+    );
     if (product) {
       tabsData.push({
         key: category.toLowerCase(),
@@ -55,7 +61,6 @@ const Tabs = ({ data }) => {
       tabImages[category.toLowerCase()] = product.images[1];
     }
   });
-
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -72,18 +77,20 @@ const Tabs = ({ data }) => {
           <h2 className="text-xl font-bold mb-5">More ideas and inspiration</h2>
         </div>
         <div
-          className={` py-2.5 bloc-tabsnone flex flex-row tabcategory ${isSticky ? "sticky-tabcategory" : ""
-            }`}
+          className={` py-2.5 bloc-tabsnone flex flex-row tabcategory ${
+            isSticky ? "sticky-tabcategory" : ""
+          }`}
           style={{ overflowX: "auto", WebkitOverflowScrolling: "touch" }}
         >
           {tabsData.map((tab, i) => (
             <div
               key={i}
               className={` px-5 py-2 tabS cursor-pointer
-            ${activeTab === tab.key
-                  ? "active-tabs  border border-black mr-2.5 rounded-full flex items-center justify-center bg-gray-100 whitespace-nowrap"
-                  : "tabs  border border-white mr-2.5 rounded-full flex items-center justify-center bg-gray-100 whitespace-nowrap"
-                }`}
+            ${
+              activeTab === tab.key
+                ? "active-tabs  border border-black mr-2.5 rounded-full flex items-center justify-center bg-gray-100 whitespace-nowrap"
+                : "tabs  border border-white mr-2.5 rounded-full flex items-center justify-center bg-gray-100 whitespace-nowrap"
+            }`}
               onClick={() => setActiveTab(tab.key)}
             >
               {tab.label}

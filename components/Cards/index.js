@@ -96,12 +96,20 @@ function Cards() {
       <Trending />
 
       <RoomCard />
-      {/* <Trending /> */}
+      {uniqueCategories && (
+        <>
+          <Dataslider
+            category={uniqueCategories[0]}
+            sliderIndex={0}
+            data={Partdata(uniqueCategories[0])}
+          />
+        </>
+      )}
       <Display />
       <Multicard />
       {/* <Image /> */}
 
-      {uniqueCategories?.map((item, index) => (
+      {uniqueCategories?.slice(1, 3)?.map((item, index) => (
         <Dataslider
           key={item}
           category={item}
