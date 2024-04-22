@@ -115,7 +115,7 @@ export default function NewMainSlider() {
               className=" swiper-slide"
               objectFit="cover"
             />
-            <div className="absolute flex text-lg text-white bottom-4 left-4">
+            <div className="absolute flex text-lg text-white bottom-4 md:left-4 left-16">
               {sliderApiData[0]?.imgTitle}
             </div>
             <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full transition-opacity opacity-0 group-hover:opacity-100">
@@ -170,7 +170,7 @@ export default function NewMainSlider() {
               objectFit="cover"
               className="object-cover swiper-slide"
             />
-            <div className="absolute flex text-lg text-white bottom-4 left-4">
+            <div className="absolute flex text-lg text-white bottom-4 md:left-4 left-16">
               {sliderApiData[1]?.imgTitle}
             </div>
             <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full transition-opacity opacity-0 group-hover:opacity-100">
@@ -225,7 +225,7 @@ export default function NewMainSlider() {
               objectFit="cover"
               className="object-cover swiper-slide"
             />
-            <div className="absolute flex text-lg text-white bottom-4 left-4">
+            <div className="absolute flex text-lg text-white bottom-4 md:left-4 left-16">
               {sliderApiData[2]?.imgTitle}
             </div>
             <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full transition-opacity opacity-0 group-hover:opacity-100">
@@ -281,7 +281,7 @@ export default function NewMainSlider() {
                 objectFit="cover"
                 className="object-cover swiper-slide"
               />
-              <div className="absolute flex text-lg text-white bottom-4 left-4">
+              <div className="absolute flex text-lg text-white bottom-4 md:left-4 left-16">
                 {data?.imgTitle}
               </div>
               <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full transition-opacity opacity-0 group-hover:opacity-100">

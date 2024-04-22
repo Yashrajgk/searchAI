@@ -42,7 +42,7 @@ const Display = () => {
                   layout="fill"
                   objectFit="cover"
                 />
-                <div className="absolute top-[18rem] left-0 right-0 bottom-0 flex flex-col justify-center items-center p-2">
+                <div className="absolute md:top-[18rem] left-0 right-0 bottom-0 flex flex-col justify-center items-center p-2">
                   <h2 className="text-white text-center text-3xl  mb-4">
                     {apiData[0].imgTitle}
                   </h2>
@@ -75,7 +75,7 @@ const Display = () => {
                   layout="fill"
                   objectFit="cover"
                 />
-                <div className="absolute top-[18rem] left-0 right-0 bottom-0 flex flex-col justify-center items-center p-2">
+                <div className="absolute md:top-[18rem] left-0 right-0 bottom-0 flex flex-col justify-center items-center p-2">
                   <h2 className="text-white text-center text-3xl mb-4">
                     {apiData[1].imgTitle}
                   </h2>

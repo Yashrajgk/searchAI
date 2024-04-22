@@ -56,7 +56,7 @@ const RoomCard = () => {
                       layout="fill"
                       alt="Image"
                     />
-                    <div className="absolute top-[20rem] left-0 right-0 bottom-0 flex flex-col justify-center items-center p-2">
+                    <div className="absolute md:top-[20rem]  left-0 right-0 bottom-0 flex flex-col justify-center items-center p-2">
                      <h2 className="text-white text-center text-3xl  mb-4">
                         Trend asds ffsdfing and Chooses
                       </h2>
