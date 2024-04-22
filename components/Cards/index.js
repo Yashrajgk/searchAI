@@ -96,28 +96,77 @@ function Cards() {
       <Trending />
 
       <RoomCard />
-      {uniqueCategories && (
-        <>
-          <Dataslider
-            category={uniqueCategories[0]}
-            sliderIndex={0}
-            data={Partdata(uniqueCategories[0])}
-          />
-        </>
-      )}
+      {uniqueCategories
+        ? uniqueCategories.includes("Flooring") && (
+            <>
+              <Dataslider
+                category={"Flooring"}
+                sliderIndex={0}
+                data={Partdata("Flooring")}
+              />
+            </>
+          )
+        : uniqueCategories.includes("Wallpaper") && (
+            <>
+              <Dataslider
+                category={"Wallpaper"}
+                sliderIndex={0}
+                data={Partdata("Wallpaper")}
+              />
+            </>
+          )}
       <Display />
       <Multicard />
       {/* <Image /> */}
+      {uniqueCategories &&
+        (uniqueCategories.includes("Flooring") ? (
+          <>
+            <Dataslider
+              category={"Wallpaper"}
+              sliderIndex={0}
+              data={Partdata("Wallpaper")}
+            />
+          </>
+        ) : (
+          <>
+            {uniqueCategories.includes("Curtains") ? (
+              <>
+                <Dataslider
+                  category={"Curtains"}
+                  sliderIndex={0}
+                  data={Partdata("Curtains")}
+                />
+              </>
+            ) : (
+              <>
+                <Dataslider
+                  category={"Blinds"}
+                  sliderIndex={0}
+                  data={Partdata("Blinds")}
+                />
+              </>
+            )}
+          </>
+        ))}
 
-      {uniqueCategories?.slice(1, 3)?.map((item, index) => (
-        <Dataslider
-          key={item}
-          category={item}
-          sliderIndex={index}
-          data={Partdata(item)}
-          ref={datasliderRefs.current[index]}
-        />
-      ))}
+      {uniqueCategories.includes("Flooring") ? (
+        <>
+          <Dataslider
+            category={"Curtains"}
+            sliderIndex={0}
+            data={Partdata("Curtains")}
+          />
+        </>
+      ) : (
+        <>
+          <Dataslider
+            category={"Blinds"}
+            sliderIndex={0}
+            data={Partdata("Blinds")}
+          />
+        </>
+      )}
+
       <div className="w-full sm:px-[50px] px-[20px] py-20  h-auto">
         {/* <Imagechanger /> */}
       </div>

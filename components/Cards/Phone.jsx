@@ -2,23 +2,41 @@ import React from "react";
 import Image from "next/image";
 const Phone = () => {
   return (
-    <div>
-      <div className="lg:relative flex flex-col h-auto  items-center sm:px-[50px] px-[20px] ">
-        <div className=" lg:absolute md:top-20 text-center flex flex-col items-center justify-center gap-3 lg:w-[40vw] w-[80vw] ">
-          <div className="font-bold xl:text-4xl text-xl">
-            Why Ayatrio is the best place to buy home farnising
-          </div>
-          <div className="text-base lg:w-[35vw] w-[70vw]">
-            You can choose a payment option that works for you, pay less with a
-            trade-in, connect your new iPhone to your carrier, and get set up
-            quickly. You can also chat with a Specialist anytime.
-          </div>
+    <div className="sm:px[50px] px-[20px]">
+      <h1 className="px-[20px] font-bold xl:text-4xl text-2xl py-4">
+        Ayatrio is a global leader in life at home.
+      </h1>
 
-          <a href="#" className="text-sky-600 lg:text-lg text-sm">
-            Learn more &gt;
-          </a>
-        </div>
-        <div>
+      <div className="px-[20px] w-5/6 font-normal py-4">
+        Whether you just moved into a new home or looking to revamp your current
+        one, we at Ayatrio are here to inspire you with affordable home
+        furnishing solutions, there is a piece of furnish product including
+        furniture to every corner of your home. Create a home that is perfect
+        for you. Shopping at Ayatrio is a bit different and exciting compared to
+        your shopping at an everyday retail. It is about experiencing solutions
+        first hand and getting to know ideas and inspirations that can fit
+        perfectly into your home. That’s why, we offer more than 3000 products,
+        solutions at ourstore along with home furnishing ideas and services for
+        you to explore. When you visit Ayatrio store, make yourself at home in
+        our many room settings in the store. Squeeze the upholsteries, feel the
+        oriental rugs,try the sofa beds and open the cabinets to feel the
+        quality. On the price tag, you’ll find all you need to know about a
+        product, including where in the store you can pick it up.
+      </div>
+
+      <p className="px-[20px] w-5/6 font-normal py-4">
+        Since most Ayatrio furnishing is flat-packed, they are quite easy to
+        bring home when you buy from the store.
+      </p>
+
+      <p className="px-[20px] w-5/6 font-semibold text-xl  py-4">
+        Wallpaper | Flooring | curtain | blinds | Mattresses | Seating | Coffee
+        tables | Wardrobes Storage | Bookshelves | Shoe racks | Décor | Bathroom
+        | Textiles | Pots & plants Home electronics | Home improvement |
+        Lighting
+      </p>
+
+      {/* <div>
           <Image
             src="/images/apple.webp"
             alt=""
@@ -27,8 +45,8 @@ const Phone = () => {
             style={{ width: "100vw", height: "auto" }}
             className="h-auto  md:w-100vw  w-full"
           />
-        </div>
-      </div>
+        </div> */}
+
       <br />
     </div>
   );
