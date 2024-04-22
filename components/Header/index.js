@@ -18,6 +18,7 @@ import { selectQuantity } from "../Features/Slices/calculationSlice";
 import { headerLinks } from "@/Model/Dropdown/AsideData/AsideData";
 import Midsection from "./Midsection/Midsection";
 import { useSelector } from "react-redux";
+import { MenuIcon, X } from "lucide-react";
 // import NextTopLoader from "nextjs-toploader";
 
 function Header({ howMuchScrolled }) {
@@ -34,6 +35,12 @@ function Header({ howMuchScrolled }) {
   // aside section toggle
   const [isOpen, setIsOpen] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState(null);
+
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -131,8 +138,7 @@ function Header({ howMuchScrolled }) {
   const homeRoute = "/home";
 
   return (
-    <div>
-      {/* <NextTopLoader zIndex={999999}  /> */}
+    <div className="">
       {homeRoute === pathname && typeof window !== "undefined" ? (
         typeof window !== "undefined" && window.scrollY < 20 ? (
           <TopHeader />
@@ -142,7 +148,7 @@ function Header({ howMuchScrolled }) {
         className={`fixed w-full sm:bg-none ${
           homeRoute === pathname
             ? typeof window !== "undefined" && window.scrollY < 20
-              ? "sm:top-[30px] top-[35px]"
+              ? "md:top-[30px] top-[0px]"
               : "top-0"
             : "top-0"
         } z-[99999]
@@ -176,26 +182,14 @@ function Header({ howMuchScrolled }) {
                 </div>
               </div>
               {/* center-list */}
-              <div className=" flex justify-center items-center  gap-1 sm:gap-5 ">
+              <div className=" flex justify-center items-center md:gap-5 ">
                 {/* <div className=" profile-menu font-bold p-[9px] hover:bg-zinc-100 hover:rounded-full">
                 <Menu />
               </div> */}
                 {/* for only mobile search */}
 
-                <div
-                  className="sm:hidden block  w-10 h-10 p-[7px]"
-                  onClick={handleModalOpen}
-                >
-                  <Image
-                    src="/svg/icon/search.svg"
-                    alt=""
-                    width={20}
-                    height={20}
-                    className="header-div-icon"
-                  />
-                </div>
                 <div className="">
-                  <nav className="hidden sm:flex space-x-1 ">
+                  <nav className="hidden md:flex space-x-1 ">
                     {headerLinks.map((value, idx) => (
                       <div
                         key={idx}
@@ -231,10 +225,10 @@ function Header({ howMuchScrolled }) {
               </div>
               {/* search-bar */}
 
-              <div className=" flex flex-row items-center justify-end  gap-2">
+              <div className="flex flex-row items-center justify-end  gap-2">
                 <div
                   onClick={handleModalOpen}
-                  className="bg-zinc-100  justify-end rounded-full w-[9rem] h-10 p-[9px] hover:bg-zinc-400 hover:rounded-full cursor-pointer sm:block hidden"
+                  className="bg-zinc-100  justify-end rounded-full w-[9rem] h-10 p-[9px] hover:bg-zinc-400 hover:rounded-full cursor-pointer md:block hidden"
                 >
                   <span>
                     <Image
@@ -246,6 +240,18 @@ function Header({ howMuchScrolled }) {
                     />
                   </span>
                   <p className="ml-6  text-gray-400">Search</p>
+                </div>
+                <div
+                  className="md:hidden block p-[9px] hover:bg-zinc-100 hover:rounded-full cursor-pointer"
+                  onClick={handleModalOpen}
+                >
+                  <Image
+                    src="/svg/icon/search.svg"
+                    alt=""
+                    width={20}
+                    height={20}
+                    className="header-div-icon"
+                  />
                 </div>
                 <div className="sm:block hidden w-10 h-10 p-[9px] hover:bg-zinc-100 hover:rounded-full cursor-pointer">
                   <Link href={"/login"}>
@@ -298,6 +304,11 @@ function Header({ howMuchScrolled }) {
                     />
                   </div>
                 )}
+
+                <div className="w-10 h-10 p-[9px] hover:bg-zinc-100 hover:rounded-full cursor-pointer md:hidden">
+                  <MenuIcon onClick={toggleMobileMenu} />
+                </div>
+
                 {/* for only mobole search */}
                 {isModalOPen && (
                   /* <SearchModal
@@ -324,6 +335,55 @@ function Header({ howMuchScrolled }) {
           />
         )}
       </div>
+      {isMobileMenuOpen && (
+        <>
+          <div className="fixed inset-0 bg-black bg-opacity-50  flex justify-end z-[100000] md:hidden">
+            <div className="bg-zinc-50 w-64 h-full shadow-lg p-4">
+              <div className="flex justify-end items-center mb-4">
+                <button
+                  onClick={toggleMobileMenu}
+                  className="text-black hover:text-gray-800 focus:outline-none "
+                >
+                  <X size={24} />
+                </button>
+              </div>
+              <nav className="flex flex-col space-y-1 ">
+                {headerLinks.map((value, idx) => (
+                  <div
+                    key={idx}
+                    onMouseEnter={() => handleMouseEnter(idx)}
+                    onMouseLeave={handleMouseLeave}
+                    onClick={() => handleClick(idx)}
+                  >
+                    <Link
+                      className={`text-md text-sm font-semibold  ${
+                        isOpen ? "border-b-2 border-black" : ""
+                      }`}
+                      href="#"
+                      onClick={toggleDropdown}
+                    >
+                      <p
+                        className={`block p-2 text-lg font-medium border-b-2 ${
+                          hoveredIndex === idx
+                            ? "border-black"
+                            : "border-transparent"
+                        }`}
+                      >
+                        {value.label}
+                      </p>
+                    </Link>
+                    {idx < 2 && hoveredIndex === idx && (
+                      <Asidebox hoveredIndex={hoveredIndex} />
+                    )}
+                    {idx === 2 && hoveredIndex === idx && <Midsection />}
+                  </div>
+                ))}
+              </nav>
+              {/* Add more menu items */}
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }

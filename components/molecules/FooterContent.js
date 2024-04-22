@@ -62,7 +62,7 @@ const FooterContent = (props) => {
   };
   return (
     <div>
-      {screenSize < 451 ? (
+      {screenSize < 801 ? (
         <div>
           <h3
             className="py-2 px-1 font-semibold border-b-2 border-t-2"

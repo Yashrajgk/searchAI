@@ -7,7 +7,7 @@ const TopHeader = () => {
   const pathname = usePathname();
   const homeRoute = "/home";
   return (
-    <div>
+    <div className="hidden md:block">
       <div
         className={`bg-zinc-100 h-[30px] ${
           homeRoute === pathname ? "fixed" : ""

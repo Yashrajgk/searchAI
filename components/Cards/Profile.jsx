@@ -11,8 +11,8 @@ const Profile = () => {
   return (
     <div>
       <div className=" ">
-        <div className="grid sm:grid-cols-5 grid-cols-1 gap-4 bg-zinc-100 pt-11 sm:px-[50px] px-[20px]  ">
-          <div className="col-span-2 sm:mb-auto mb-0">
+        <div className="grid md:grid-cols-5 grid-cols-1 gap-4 bg-zinc-100 py-11 sm:px-[50px] px-[20px]  ">
+          <div className="col-span-2 md:mb-auto mb-0">
             <div className="col-span-1  mt-4">
               <div className="mb-2 ">Inspiration to installation</div>
               <div className="font-bold sm:text-3xl text-xl mb-4">
@@ -32,7 +32,7 @@ const Profile = () => {
                 </span>
                 <br />
               </div>
-              <button className="bg-black pt-3 pb-3 pl-4 pr-4 mb-24 mt-12 rounded-full flex justify-center items-center text-white">
+              <button className="bg-black pt-3 pb-3 pl-4 pr-4 mb-12 mt-12 rounded-full flex justify-center items-center text-white">
                 Book an appointment
               </button>
             </div>

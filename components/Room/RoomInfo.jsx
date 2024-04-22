@@ -8,7 +8,7 @@ const RoomInfo = ({ data }) => {
     <div className="flex sm:my-6 my-0 sm:ml-1 ml-0" style={{ width: "100%" }}>
       <div className="sm:mr-4 mr-0 sm:w-[100%] w-[100%] sm:mt-0 mt-[-20rem]">
         <div className="room-details pb-4">
-          <h2 className="sm:text-2xl text-lg sm:font-semibold font-medium mt-[24rem]">
+          <h2 className="sm:text-2xl text-lg sm:font-semibold font-medium mt-[24rem] sm:mt-0">
             Room Details
           </h2>
           <div className=" text-base">

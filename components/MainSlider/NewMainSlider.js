@@ -56,7 +56,7 @@ export default function NewMainSlider() {
       onMouseLeave={() => setNavigationVisible(false)}
     >
       <Swiper
-        className="swiper-slider"
+        className="swiper-slider h-[78vh]"
         centeredSlides={true}
         grabCursor={true}
         // freeMode={false}
@@ -81,7 +81,7 @@ export default function NewMainSlider() {
         // Responsive breakpoints
         breakpoints={{
           412: {
-            slidesPerView: 1.5,
+            slidesPerView: 1,
             spaceBetween: 5,
           },
 
@@ -106,7 +106,7 @@ export default function NewMainSlider() {
         </div>
 
         <SwiperSlide key={sliderApiData[0]?._id}>
-          <div className="relative group h-[70vh] bg-gray-100">
+          <div className="relative group h-[78vh] bg-gray-100">
             <Image
               src={sliderApiData[0]?.imgSrc}
               fill
@@ -161,7 +161,7 @@ export default function NewMainSlider() {
           </div>
         </SwiperSlide>
         <SwiperSlide key={sliderApiData[1]?._id}>
-          <div className="relative group h-[70vh] bg-gray-500">
+          <div className="relative group h-[78vh] bg-gray-500">
             <Image
               src={sliderApiData[1]?.imgSrc}
               width={500}
@@ -216,7 +216,7 @@ export default function NewMainSlider() {
           </div>
         </SwiperSlide>
         <SwiperSlide key={sliderApiData[2]?._id}>
-          <div className="relative group h-[70vh] bg-gray-100">
+          <div className="relative group h-[78vh] bg-gray-100">
             <Image
               src={sliderApiData[2]?.imgSrc}
               width={500}
@@ -272,7 +272,7 @@ export default function NewMainSlider() {
         </SwiperSlide>
         {sliderApiData?.slice(3).map((data) => (
           <SwiperSlide key={data._id}>
-            <div className="relative group h-[70vh] bg-gray-100">
+            <div className="relative group h-[78vh] bg-gray-100">
               <Image
                 src={data.imgSrc}
                 width={500}

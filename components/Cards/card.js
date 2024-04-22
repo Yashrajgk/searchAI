@@ -48,9 +48,9 @@ function Card(props) {
           height: "100%",
         }}
       >
-        <div className={`card-flex ${props.cssClass}  `}>
+        <div className={``}>
           <div
-            className="carousel cursor-pointer"
+            className="relative flex h-full w-full items-center justify-center cursor-pointer aspect-square"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
@@ -75,7 +75,7 @@ function Card(props) {
                     width={300}
                     onClick={() => handleclick(props.id, props.category)}
                     className={
-                      slide === idx ? "h-[300px] w-[300px]" : "slide-hidden"
+                      slide === idx ? "aspect-square w-[400px]" : "slide-hidden"
                     }
                   />
                 </Link>

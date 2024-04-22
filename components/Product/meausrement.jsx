@@ -4,14 +4,15 @@ import Label from "../Label/Label";
 
 const meausrement = ({ filteredProductData }) => {
   return (
-    <div className="flex sm:flex-row w-full h-auto flex-col relative overflow-hidden ">
-      <div className="relative max-h-[500px] ">
+    <div className="flex md:flex-row w-full h-auto flex-col relative overflow-hidden ">
+      <div className="relative bg-red-200 max-h-[500px] md:w-2/3">
         <Image
           src="/product/curtain.avif"
           alt="curtain"
           width={700}
           height={300}
           style={{ objectFit: "cover" }}
+          className="w-full"
         />
         <div className="carcular-conui top-16 left-48  absolute rounded-full w-[30px] h-[30px]">
           <Label />
@@ -20,7 +21,7 @@ const meausrement = ({ filteredProductData }) => {
           <Label />
         </div>
       </div>
-      <div className="sm:w-1/3  sm:h-auto sm:flex-grow bg-zinc-100  px-10 sm:py-10 py-5">
+      <div className="md:w-1/3  sm:h-auto sm:flex-grow bg-zinc-100  px-10 sm:py-10 py-5">
         <div className="flex flex-col ">
           <div>Where we found happiness</div>
           <div>

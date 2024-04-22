@@ -23,25 +23,10 @@ const ProfileContent = () => {
   // console.log(profileData);
 
   return (
-    <div className=" transparent rounded-lg  pb-8">
-      <div className=" flex flex-row items-end justify-end gap-6">
-        <Image
-          src="/svg/dropdown/leftvector.svg"
-          width={20}
-          height={20}
-          alt="Arrow"
-          className="vector-two bg-gray-300 rounded-full h-7 w-7"
-        />
-        <Image
-          src="/svg/dropdown/rightvector.svg"
-          width={20}
-          height={20}
-          alt="Arrow"
-          className="vector-one mr-10  bg-gray-300 rounded-full h-7 w-7"
-        />
-      </div>
+    <div className=" transparent rounded-lg  pb-8 ">
+      
       <Swiper
-        className=""
+        className="h-80"
         spaceBetween={20}
         navigation={{
           nextEl: ".vector-one",
@@ -64,9 +49,9 @@ const ProfileContent = () => {
         {profileData.map((person, index) => (
           <SwiperSlide className="bg-[#f4f4f5] my-slider" key={index}>
             <div className=" flex flex-col justify-start items-center">
-              <div className="p-4 flex justify-center items-center">
+              <div className="p-4 flex justify-center items-center ">
                 {" "}
-                <div className="parent relative bg-black rounded-full sm:h-40 h-28 sm:w-40 w-28 mb-2 sm:mt-24 mt-4  ">
+                <div className="parent relative bg-black rounded-full md:h-40 h-28 md:w-40 w-28 mb-2 md:mt-8 mt-4  ">
                   <Image
                     src={person.image}
                     className="child absolute rounded-full w-full h-full object-cover"
@@ -93,13 +78,29 @@ const ProfileContent = () => {
                 <p className="text-md">{person.role}</p>
               </div>
             </div>
+            {/* <br />
             <br />
             <br />
-            <br />
-            <br />
+            <br /> */}
           </SwiperSlide>
         ))}
       </Swiper>
+        <div className=" flex flex-row items-end justify-end gap-6">
+        <Image
+          src="/svg/dropdown/leftvector.svg"
+          width={20}
+          height={20}
+          alt="Arrow"
+          className="vector-two bg-gray-300 rounded-full h-7 w-7"
+        />
+        <Image
+          src="/svg/dropdown/rightvector.svg"
+          width={20}
+          height={20}
+          alt="Arrow"
+          className="vector-one mr-10  bg-gray-300 rounded-full h-7 w-7"
+        />
+      </div>
     </div>
   );
 };

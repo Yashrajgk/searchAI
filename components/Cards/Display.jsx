@@ -28,11 +28,11 @@ const Display = () => {
 
   return (
     <>
-      <div className=" w-[78rem] flex justify-between mx-auto my-8">
-        <div className=" w-full flex justify-center">
+      <div className=" sm:px-[50px] px-[20px] flex flex-col md:flex-row gap-4  items-center justify-between mx-auto my-8">
+        <div className="max-w-1/2] w-full">
           {apiData.length > 0 ? (
             <>
-              <div className={`relative w-full h-[38rem] mr-[22px]`}>
+              <div className={`relative w-full aspect-square max-w-1/2]`}>
                 <Image
                   className="w-full h-full"
                   width={0}
@@ -43,7 +43,7 @@ const Display = () => {
                   objectFit="cover"
                 />
                 <div className="absolute top-[18rem] left-0 right-0 bottom-0 flex flex-col justify-center items-center p-2">
-                  <h2 className="text-black text-center text-3xl  mb-4">
+                  <h2 className="text-white text-center text-3xl  mb-4">
                     {apiData[0].imgTitle}
                   </h2>
                   <button className="bg-black hover:bg-zinc-300 text-white   py-2 px-10 h-12 rounded-full">
@@ -62,10 +62,10 @@ const Display = () => {
             </>
           )}
         </div>
-        <div className=" w-full flex justify-center">
+        <div className="max-w-1/2] w-full">
           {apiData.length > 0 ? (
             <>
-              <div className={`relative w-full h-[38rem]`}>
+              <div className={`relative w-full aspect-square max-w-1/2] `}>
                 <Image
                   className="w-full h-full"
                   width={0}
@@ -76,7 +76,7 @@ const Display = () => {
                   objectFit="cover"
                 />
                 <div className="absolute top-[18rem] left-0 right-0 bottom-0 flex flex-col justify-center items-center p-2">
-                  <h2 className="text-black text-center text-3xl  mb-4">
+                  <h2 className="text-white text-center text-3xl mb-4">
                     {apiData[1].imgTitle}
                   </h2>
                   <button className="bg-black hover:bg-zinc-300 text-white  py-2 px-10 h-12 rounded-full">

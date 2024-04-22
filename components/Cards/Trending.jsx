@@ -97,16 +97,16 @@ const Trending = () => {
           }}
           breakpoints={{
             300: {
-              slidesPerView: 1,
-              spaceBetween: 1,
+              slidesPerView: 1.2,
+              spaceBetween: 5,
             },
 
-            // 640: {
-            //   slidesPerView: 1.25,
-            //   spaceBetween: 5,
-            // },
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 5,
+            },
             1024: {
-              slidesPerView: 4.07,
+              slidesPerView: 4,
               spaceBetween: 5,
             },
           }}
@@ -125,7 +125,7 @@ const Trending = () => {
             newTrendingData.map((product, idx) => {
               return (
                 <SwiperSlide key={idx} className="ml-0">
-                  <div className="grid grid-cols-1 mt-2 w-full  h-full fade-in ">
+                  <div className="grid grid-cols-1 w-full h-full fade-in ">
                     <Card
                       title={product.productTitle}
                       // date={product.date}

@@ -61,9 +61,7 @@ const CartMain = () => {
       }
       const data = response.data;
       setcartdata(data);
-      console.log(cartdata);
       setCartStaus("succeeded");
-      console.log(data.bill);
       dispatch(setDbItems(data));
     } catch (error) {
       // console.error("Error Fetching data from DB : ", error);
@@ -76,8 +74,8 @@ const CartMain = () => {
     fetchData();
   }, []);
 
-  if (cartStatus === "succeeded" && cartdata) {
-    totalPrice = cartdata.items.reduce(
+  if (cartStatus === "succeeded" && selectedItems) {
+    totalPrice = selectedItems.items.reduce(
       (total, item) => total + item.productId.totalPrice * item.quantity,
       0
     );
@@ -280,8 +278,8 @@ const CartMain = () => {
               {/*  code */}
               {cartStatus === "loading" && <p>Loading...</p>}
               {cartStatus === "failed" && <p>Error loading data from DB.</p>}
-              {cartStatus === "succeeded" && cartdata ? (
-                cartdata.items.map((item, index) => {
+              {cartStatus === "succeeded" && selectedItems ? (
+                selectedItems.items.map((item, index) => {
                   return (
                     <CartProduct
                       cartItem={item}

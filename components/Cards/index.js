@@ -96,7 +96,7 @@ function Cards() {
       <Trending />
 
       <RoomCard />
-      <Trending />
+      {/* <Trending /> */}
       <Display />
       <Multicard />
       {/* <Image /> */}

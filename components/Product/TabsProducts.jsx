@@ -323,7 +323,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
         <div>
           <h2 className="mb-5 text-xl font-bold">More ideas and inspiration</h2>
         </div>
-        <div className="flex sticky top-0 z-20 bg-white py-5 scrollbar">
+        <div className="hidden md:flex sticky top-0 z-20 bg-white py-5 scrollbar">
           <TabsProductContent
             filterName={"Sort"}
             commonClasses={commonClasses}

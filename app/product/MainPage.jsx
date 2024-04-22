@@ -81,10 +81,13 @@ const RoomPage = () => {
             <div className="sm:basis-2/3 flex flex-col  sm:flex-grow">
               <RoomImageList images={data?.images} />
               <ImageCaresoul images={data?.images} />
+              <div className="block sm:hidden">
+                <Card data={data} />
+              </div>
               <RoomInfo data={data} />
               <Reviews data={data} />
             </div>
-            <div className="sm:basis-2/3 flex flex-col  ">
+            <div className="sm:basis-2/3 hidden  sm:flex flex-col  ">
               <div className="sm:sticky flex top-9 mb-16 ml-0">
                 <Card data={data} />
               </div>
