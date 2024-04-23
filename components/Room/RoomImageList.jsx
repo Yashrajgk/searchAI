@@ -15,8 +15,8 @@ export default function RoomImageList({ images }) {
               <Image
                 src={image}
                 alt={`Room Image ${index + 1}`}
-                width={400}
-                height={400}
+                width={800}
+                height={800}
                 className="sm:w-full aspect-square object-cover"
               />
             </div>

@@ -12,11 +12,14 @@ import Image from "next/image";
 
 const Tabs = ({ data }) => {
   const router = useRouter();
-
   const [activeTab, setActiveTab] = useState(
     data?.recommendations?.[0]?.recommendedProducts[0]?.roomCategory[0].toLowerCase()
   );
   const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    setActiveTab(data?.recommendations?.[0]?.recommendedProducts[0]?.roomCategory[0].toLowerCase() )
+  }, [data]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,15 +46,16 @@ const Tabs = ({ data }) => {
     )
   );
 
-  const uniqueRoomCategories = [...new Set(recommendedProducts)];
-
   const tabsData = [];
   const tabImages = {};
+
+  const uniqueRoomCategories = [...new Set(recommendedProducts)];
 
   uniqueRoomCategories?.forEach((category) => {
     const product = data?.recommendations?.[0]?.recommendedProducts.find(
       (item) => item.roomCategory.includes(category)
     );
+
     if (product) {
       tabsData.push({
         key: category.toLowerCase(),

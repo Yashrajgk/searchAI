@@ -42,7 +42,7 @@ function Card(props) {
     <>
       <div
         key={props.cardkey}
-        className="card"
+        className="card pb-12"
         style={{
           width: "100%",
           height: "100%",

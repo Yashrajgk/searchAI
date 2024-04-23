@@ -90,7 +90,7 @@ export default function NewMainSlider() {
             spaceBetween: 5,
           },
           1024: {
-            slidesPerView: 1.72,
+            slidesPerView: 1.5,
             spaceBetween: 5,
           },
         }}
@@ -112,7 +112,7 @@ export default function NewMainSlider() {
               fill
               alt="Swiper"
               priority
-              className=" swiper-slide"
+              className=" swiper-slide "
               objectFit="cover"
             />
             <div className="absolute flex text-lg text-white bottom-4 md:left-4 left-16">

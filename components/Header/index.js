@@ -164,11 +164,11 @@ function Header({ howMuchScrolled }) {
             <div
               className={`${
                 isScrolled ? " border-b-[0.5px] border-slate-200" : ""
-              } flex flex-row justify-between items-center py-[3px] sm:px-[30px] px-[10px]`}
+              } flex flex-row justify-between items-center py-[5px] sm:px-[30px] px-[10px]`}
             >
               {/* main-logo */}
               <div className=" flex items-center justify-start ">
-                <div className="mainlogo">
+                <div className="mainlogo md:pr-[60px]">
                   <Link href="/">
                     <Image
                       src="/images/ayatriologo.webp"
@@ -182,7 +182,7 @@ function Header({ howMuchScrolled }) {
                 </div>
               </div>
               {/* center-list */}
-              <div className=" flex justify-center items-center md:gap-5 ">
+              <div className=" flex justify-center items-center gap-1 md:gap-5 ">
                 {/* <div className=" profile-menu font-bold p-[9px] hover:bg-zinc-100 hover:rounded-full">
                 <Menu />
               </div> */}
@@ -198,14 +198,14 @@ function Header({ howMuchScrolled }) {
                         onClick={() => handleClick(idx)}
                       >
                         <Link
-                          className={`text-md text-sm font-semibold  ${
+                          className={`text-md  font-semibold  ${
                             isOpen ? "border-b-2 border-black" : ""
                           }`}
                           href="#"
                           onClick={toggleDropdown}
                         >
                           <p
-                            className={`block p-2 text-lg font-medium border-b-2 ${
+                            className={`block p-2 py-3 text-lg font-medium border-b-2 ${
                               hoveredIndex === idx
                                 ? "border-black"
                                 : "border-transparent"
@@ -228,7 +228,7 @@ function Header({ howMuchScrolled }) {
               <div className="flex flex-row items-center justify-end  gap-2">
                 <div
                   onClick={handleModalOpen}
-                  className="bg-zinc-100  justify-end rounded-full w-[9rem] h-10 p-[9px] hover:bg-zinc-400 hover:rounded-full cursor-pointer md:block hidden"
+                  className="bg-[#f5f5f5] justify-end rounded-full w-[9rem] h-10 p-[9px] hover:bg-[#e5e5e5] hover:rounded-full cursor-pointer md:block hidden"
                 >
                   <span>
                     <Image
@@ -242,7 +242,7 @@ function Header({ howMuchScrolled }) {
                   <p className="ml-6  text-gray-400">Search</p>
                 </div>
                 <div
-                  className="md:hidden block p-[9px] hover:bg-zinc-100 hover:rounded-full cursor-pointer"
+                  className="md:hidden block w-10 h-10 p-[9px] hover:bg-zinc-100 hover:rounded-full cursor-pointer"
                   onClick={handleModalOpen}
                 >
                   <Image

@@ -184,7 +184,7 @@ const Card = ({ data }) => {
           </div>
 
           {/* calculations */}
-          <div className="border-black w-[100%] mt-[30px] bg-zinc-100 relative">
+          <div className="border-black w-[100%] sm:w-[25vw] mt-[30px] bg-zinc-100 relative">
             <div className="flex flex-row">
               <div
                 className="w-[1px] h-full bg-[#e5e7eb] absolute"
