@@ -3,11 +3,15 @@ import axios from "axios";
 // const BASE_URL = "http://52.66.30.159:8080/api";
 const BASE_URL = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api`;
 const createApiEndpoint = (endpoint) => `${BASE_URL}/${endpoint}`;
-if (typeof window !== "undefined") {
-  var id = localStorage.getItem("deviceId");
-  // console.log("id",id);
-}
+// if (typeof window !== "undefined") {
+//   var id = localStorage.getItem("deviceId");
+//   // console.log("id",id);
+// }
 export const fetchRecommendedProduct = async () => {
+  let id;
+  if (typeof window !== "undefined") {
+    id = localStorage.getItem("deviceId");
+  }
   try {
     const response = await axios.get(
       createApiEndpoint(`getRecommendation?deviceId=${id}`)

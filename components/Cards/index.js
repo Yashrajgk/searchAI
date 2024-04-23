@@ -96,25 +96,23 @@ function Cards() {
       <Trending />
 
       <RoomCard />
-      {uniqueCategories
-        ? uniqueCategories.includes("Flooring") && (
-            <>
-              <Dataslider
-                category={"Flooring"}
-                sliderIndex={0}
-                data={Partdata("Flooring")}
-              />
-            </>
-          )
-        : uniqueCategories.includes("Wallpaper") && (
-            <>
-              <Dataslider
-                category={"Wallpaper"}
-                sliderIndex={0}
-                data={Partdata("Wallpaper")}
-              />
-            </>
-          )}
+      {uniqueCategories && uniqueCategories.includes("Flooring") ? (
+        <>
+          <Dataslider
+            category={"Flooring"}
+            sliderIndex={0}
+            data={Partdata("Flooring")}
+          />
+        </>
+      ) : (
+        <>
+          <Dataslider
+            category={"Wallpaper"}
+            sliderIndex={0}
+            data={Partdata("Wallpaper")}
+          />
+        </>
+      )}
       <Display />
       <Multicard />
       {/* <Image /> */}

@@ -230,6 +230,7 @@ function App() {
 
       const data = response.data;
       setIsloading(false);
+      dispatch({ type: "RECOMMENDATION_REQUEST" });
 
       // console.log(data);
     } catch (error) {
