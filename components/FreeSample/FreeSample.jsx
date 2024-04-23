@@ -204,11 +204,20 @@ const FreeSample = () => {
   // let url2 = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/products`;
   const [datastat, setDatastat] = useState("");
 
+  const [subCatImg, setSubCatImg] = useState([]);
   const [products, setProducts] = useState([]);
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         setDatastat("loading");
+        const response1 = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/categories`
+        );
+        console.log(response1.data);
+        const Subcat = response1.data.filter(
+          (item) => item.name === searchparams.get("category")
+        );
+        console.log(Subcat[0].subcategories);
         const response = await axios.get(url2, {
           params: {
             category: searchparams.get("category"),
@@ -229,9 +238,14 @@ const FreeSample = () => {
         // pick all subcategory from filtered data
         const subcategory = filteredData.map((item) => item.subcategory);
         const uniqueSubcategory = [...new Set(subcategory)];
-        setSubCategory(uniqueSubcategory);
-        console.log({ uniqueSubcategory });
-        console.log("subcategory", subcategory);
+        console.log(uniqueSubcategory);
+        const x = Subcat[0].subcategories.filter((subcategory) => {
+          return uniqueSubcategory.includes(subcategory.name);
+        });
+
+        console.log(x);
+        setSubCategory(x);
+        // console.log("subcategory", subcategory);
 
         setProducts((prevData) => {
           const newData = filteredData;
@@ -248,19 +262,36 @@ const FreeSample = () => {
         setDatastat("failed");
       }
     };
+
     fetchProducts();
   }, []);
 
   const [rooms, setRooms] = useState([]);
 
+  const getRooms = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/rooms`
+      );
+      console.log(response.data);
+      console.log({ products });
+      const fetchAllRooms = products.map((item) => item.roomCategory);
+      console.log({ fetchAllRooms });
+      const allRooms = fetchAllRooms.flat();
+      const uniqueRooms = [...new Set(allRooms)];
+      console.log(uniqueRooms);
+      const x = response.data
+        .filter((room) => uniqueRooms.includes(room.roomType))
+        .map(({ roomType, imgSrc }) => ({ roomType, imgSrc }));
+      setRooms(x);
+      console.log(x);
+    } catch (error) {
+      console.error("Error ocurrs here", error);
+    }
+  };
+
   useEffect(() => {
-    console.log({ products });
-    const fetchAllRooms = products.map((item) => item.roomCategory);
-    console.log({ fetchAllRooms });
-    const allRooms = fetchAllRooms.flat();
-    const uniqueRooms = [...new Set(allRooms)];
-    setRooms(uniqueRooms);
-    console.log(uniqueRooms);
+    getRooms();
   }, [subCategory]);
 
   const [colors, setColors] = useState([]);
@@ -478,35 +509,36 @@ const FreeSample = () => {
               </div>
               <div className="py-4 relative w-full h-full flex flex-col  justify-center">
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-3 gap-y-1 mb-4 my-0 mx-2">
-                  {subCategory.map((item) => (
+                  {subCategory.map((item, index) => (
                     <div
-                      key={item}
+                      key={index}
                       className=" relative  overflow-hidden m-1  group rounded-2xl"
                     >
                       <div
                         onClick={() => {
-                          handleSelectValue("subcategory", item);
-                          setSubCategoryState(item);
+                          handleSelectValue("subcategory", item.name);
+                          setSubCategoryState(item.name);
                         }}
                         style={{ width: "272px", height: "150px" }}
-                        className={` rounded-2xl object-cover w-full opactiy-100 h-full block p-1 bg-gray-500 
+                        className={`parent relative rounded-2xl object-cover w-full opactiy-100 h-full block bg-gray-500 
                         ${
-                          subCategoryState === item
+                          subCategoryState === item.name
                             ? " border-2 border-black"
                             : ""
                         }`}
-                      ></div>
-                      <h3
-                        className={` p-1 rounded-sm absolute right-0 bottom-0 ${
-                          subCategoryState === item
-                            ? "font-semibold text-white absolute left-2 bottom-2 bg-transparent"
-                            : "bg-white"
-                        }`}
                       >
-                        {item}
-                      </h3>
+                        <img
+                          className="child absolute object-cover w-full h-full"
+                          src={item.img}
+                          alt={item.name}
+                        />
+                        <h3 className="child absolute right-0 bottom-0 bg-white text-black">
+                          {" "}
+                          {item.name}
+                        </h3>
+                      </div>
 
-                      {subCategoryState === item && (
+                      {subCategoryState === item.name && (
                         <div className="room-item absolute top-2 right-2 z-10  flex items-center opacity-50 justify-center">
                           <div className="circle-container relative flex justify-center items-center rounded-full bg-none">
                             <Image
@@ -560,31 +592,41 @@ const FreeSample = () => {
               </div>
               <div className="py-4 relative w-full h-full flex flex-col  justify-center">
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-3 gap-y-1 mb-4 my-0 mx-2">
-                  {rooms.map((room) => (
+                  {rooms.map((room, index) => (
                     <div
-                      key={room}
+                      key={index}
                       className=" relative  overflow-hidden m-1  group rounded-2xl"
                     >
                       <div
                         onClick={() => {
-                          handleSelectValue("room", room);
-                          setRoomstate(room);
+                          handleSelectValue("room", room.roomType);
+                          setRoomstate(room.roomType);
                         }}
                         style={{ width: "272px", height: "150px" }}
-                        className={` rounded-2xl object-cover w-full opactiy-100 h-full block p-1 bg-gray-500 
+                        className={` rounded-2xl object-cover w-full opactiy-100 h-full block bg-gray-500 
                         ${roomstate === room ? " border-2 border-black" : ""}`}
-                      ></div>
-                      <h3
+                      >
+                        <img
+                          className="child absolute object-cover w-full h-full"
+                          src={room.imgSrc}
+                          alt={room.roomType}
+                        />
+                        <h3 className="child absolute right-0 bottom-0 bg-white text-black">
+                          {" "}
+                          {room.roomType}
+                        </h3>
+                      </div>
+                      {/* <h3
                         className={` p-1 rounded-sm absolute right-0 bottom-0 ${
-                          roomstate === room
+                          roomstate === room.roomType
                             ? "font-semibold text-white absolute left-2 bottom-2 bg-transparent"
                             : "bg-white"
                         }`}
                       >
-                        {room}
-                      </h3>
+                        {room.roomType}
+                      </h3> */}
 
-                      {roomstate === room && (
+                      {roomstate === room.roomType && (
                         <div className="room-item absolute top-2 right-2 z-10  flex items-center opacity-50 justify-center">
                           <div className="circle-container relative flex justify-center items-center rounded-full bg-none">
                             <Image
