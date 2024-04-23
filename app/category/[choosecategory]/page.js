@@ -23,8 +23,17 @@ const page = ({ params }) => {
     if (dataSelector) {
       const uniqueCategoriesArray = [
         ...new Set(dataSelector.map((product) => product.category)),
-      ].map((category) => ({ category }));
-      // console.log(uniqueCategoriesArray);
+      ].map((category) => {
+        const productsInCategory = dataSelector.filter(
+          (product) => product.category === category
+        );
+        const firstImage =
+          productsInCategory.length > 0
+            ? productsInCategory[0].images[0]
+            : null;
+        return { category, img: firstImage };
+      });
+      console.log(uniqueCategoriesArray);
 
       setData(uniqueCategoriesArray);
     }
@@ -91,7 +100,17 @@ const page = ({ params }) => {
                   : ""
               }`}
             >
-              {item.category}
+              <div className="parent relative w-full h-full">
+                <img
+                  className="child absolute object-cover w-full h-full"
+                  src={item.img}
+                  alt={item.category}
+                />
+                <h3 className="child absolute right-0 bottom-0 bg-white text-black">
+                  {" "}
+                  {item.category}
+                </h3>
+              </div>
             </div>
           );
         })}

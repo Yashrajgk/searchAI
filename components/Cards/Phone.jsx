@@ -2,12 +2,12 @@ import React from "react";
 import Image from "next/image";
 const Phone = () => {
   return (
-    <div className="sm:px[50px] px-[20px]">
-      <h1 className="px-[20px] font-bold xl:text-4xl text-2xl py-4">
+    <div className="sm:px[50px] px-[50px]">
+      <h1 className="font-bold xl:text-4xl text-2xl py-4">
         Ayatrio is a global leader in life at home.
       </h1>
 
-      <div className="px-[20px] w-5/6 font-normal py-4">
+      <div className=" w-5/6 font-normal py-4">
         Whether you just moved into a new home or looking to revamp your current
         one, we at Ayatrio are here to inspire you with affordable home
         furnishing solutions, there is a piece of furnish product including
@@ -24,12 +24,12 @@ const Phone = () => {
         product, including where in the store you can pick it up.
       </div>
 
-      <p className="px-[20px] w-5/6 font-normal py-4">
+      <p className=" w-5/6 font-normal py-4">
         Since most Ayatrio furnishing is flat-packed, they are quite easy to
         bring home when you buy from the store.
       </p>
 
-      <p className="px-[20px] w-5/6 font-semibold text-xl  py-4">
+      <p className=" w-5/6 font-semibold text-xl  py-4">
         Wallpaper | Flooring | curtain | blinds | Mattresses | Seating | Coffee
         tables | Wardrobes Storage | Bookshelves | Shoe racks | Décor | Bathroom
         | Textiles | Pots & plants Home electronics | Home improvement |
