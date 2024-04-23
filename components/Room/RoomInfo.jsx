@@ -5,23 +5,21 @@ import Amenities from "./Other/Amenities";
 import Image from "next/image";
 const RoomInfo = ({ data }) => {
   return (
-    <div className="flex sm:my-6 my-0 sm:ml-1 ml-0" style={{ width: "100%" }}>
-      <div className="sm:mr-4 mr-0 sm:w-[100%] w-[100%] sm:mt-0 mt-[-20rem]">
+    <div className="flex  my-6 sm:ml-1 ml-0" style={{ width: "100%" }}>
+      <div className="sm:mr-4 mr-0 sm:w-[100%] w-[100%] sm:mt-0 ">
         <div className="room-details pb-4">
-          <h2 className="sm:text-2xl text-lg sm:font-semibold font-medium mt-[24rem] sm:mt-0">
+          <h2 className="sm:text-2xl text-lg sm:font-semibold font-medium sm:mt-0">
             Room Details
           </h2>
           <div className=" text-base">
-            16+ guests4 bedrooms5 beds3 bathrooms
-          </div>
-          <div className="reviews">
-            <span className="underline text-lg font-semibold">2 reviews</span>
+            16+ guests 4 bedrooms 5 beds 3 bathrooms
           </div>
         </div>
         <div>
+
           <div>
             {/* star */}
-            <div className="border border-gray-300  sm:h-20 h-auto sm:gap-0 gap-3 sm:w-[100%] w-[100%] rounded-lg  flex flex-row justify-center items-center">
+            <div className="border border-gray-300 px-2  sm:h-20 h-auto sm:gap-0 gap-3 sm:w-fit w-[100%] rounded-lg  flex flex-row justify-center items-center">
               <div
                 id="box1"
                 className="flex flex-row border-r pr-4 sm:order-1 order-2"

@@ -176,7 +176,7 @@ function Header({ howMuchScrolled }) {
                       width={300}
                       height={40}
                       priority
-                      className="p-2 sm:w-44"
+                      className="p-2 sm:w-44 object-cover"
                     />
                   </Link>
                 </div>
@@ -337,17 +337,30 @@ function Header({ howMuchScrolled }) {
       </div>
       {isMobileMenuOpen && (
         <>
-          <div className="fixed inset-0 bg-black bg-opacity-50  flex justify-end z-[100000] md:hidden">
-            <div className="bg-zinc-50 w-64 h-full shadow-lg p-4">
-              <div className="flex justify-end items-center mb-4">
-                <button
-                  onClick={toggleMobileMenu}
-                  className="text-black hover:text-gray-800 focus:outline-none "
-                >
-                  <X size={24} />
-                </button>
+          <div className="fixed inset-0 flex flex-col px-[10px] overflow-y-hidden bg-zinc-50 z-[100000] md:hidden">
+            <div className="flex justify-between items-center py-[5px]  w-full h-fit mb-4">
+              <div className=" flex items-center justify-start ">
+                <div className="mainlogo">
+                  <Link href="/">
+                    <Image
+                      src="/images/ayatriologo.webp"
+                      alt="logo"
+                      width={300}
+                      height={40}
+                      priority
+                      className="p-2  sm:w-44"
+                    />
+                  </Link>
+                </div>
               </div>
-              <nav className="flex flex-col space-y-1 ">
+
+              <div className="w-10 h-10 p-[9px] hover:bg-zinc-100 hover:rounded-full cursor-pointer md:hidden">
+                <X onClick={toggleMobileMenu} />
+              </div>
+            </div>
+
+            {/* <div className="flex"> */}
+              <div className="flex flex-col space-y-2 ">
                 {headerLinks.map((value, idx) => (
                   <div
                     key={idx}
@@ -356,7 +369,7 @@ function Header({ howMuchScrolled }) {
                     onClick={() => handleClick(idx)}
                   >
                     <Link
-                      className={`text-md text-sm font-semibold  ${
+                      className={`text-md  font-semibold  ${
                         isOpen ? "border-b-2 border-black" : ""
                       }`}
                       href="#"
@@ -378,9 +391,8 @@ function Header({ howMuchScrolled }) {
                     {idx === 2 && hoveredIndex === idx && <Midsection />}
                   </div>
                 ))}
-              </nav>
-              {/* Add more menu items */}
-            </div>
+              </div>
+            {/* </div> */}
           </div>
         </>
       )}

@@ -123,10 +123,10 @@ const Card = ({ data }) => {
   };
   return (
     <>
-      <div className="flex justify-start gap-1 sm:w-[25vw]  w-[70vw] sm:ml-[45px] ml-0">
-        <div className="mt-5  prefence-text">
+      <div className="flex justify-start gap-1 mt-5 sm:w-[25vw] w-[100%] md:ml-[45px] ml-0">
+        <div className=" w-[100%] prefence-text">
           <div className="textHolders flex flex-col">
-            <h1 className="text-2xl mt-5 font-bold mb-3">
+            <h1 className="text-2xl md:mt-5 font-bold mb-3">
               {data?.productTitle}
             </h1>
             <div className="font-medium flex tracking-wider text-[#757575] mb-1">
@@ -333,17 +333,17 @@ const Card = ({ data }) => {
                   search: "rooms",
                 },
               }}
-              className="memberCheckout my-2 flex items-center justify-center"
+              className="memberCheckout w-[100%] my-2 flex items-center justify-center"
             >
               <button
                 onClick={() => handleClickDB()}
-                className="bg-black text-white w-[100%] sm:h-14 h-8 rounded-full hover:bg-gray-900 transition duration-300 px-4"
+                className="bg-black text-white w-[100%] sm:h-14 h-10 rounded-full hover:bg-gray-900 transition duration-300 px-4"
               >
                 Buy Now
               </button>
             </Link>
 
-            <div className="guestCheckout flex justify-center items-center ">
+            <div className="guestCheckout w-[100%] flex justify-center items-center ">
               <button
                 onClick={() => {
                   handleClickDB();
@@ -354,7 +354,7 @@ const Card = ({ data }) => {
                       });
                   }
                 }}
-                className="bg-black text-white px-4   w-[100%] sm:h-14 h-8 rounded-full hover:bg-gray-900 transition duration-300"
+                className="bg-black text-white px-4   w-[100%] sm:h-14 h-10 rounded-full hover:bg-gray-900 transition duration-300"
               >
                 Add To Bag
               </button>
@@ -366,9 +366,9 @@ const Card = ({ data }) => {
                   search: "sample",
                 },
               }}
-              className="memberCheckout my-2 flex items-center justify-center"
+              className="memberCheckout w-[100%] my-2 flex items-center justify-center"
             >
-              <button className="border-2 px-4 text-black border-solid   w-[100%] sm:h-14 h-8 rounded-full  transition duration-300">
+              <button className="border-2 px-4 text-black border-solid   w-[100%] sm:h-14 h-10 rounded-full  transition duration-300">
                 Buy Now with in-store request
               </button>
             </Link>

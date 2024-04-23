@@ -197,8 +197,8 @@
     align-items: center;
     justify-content: center;
     transform: scale(0.9);
-    width: 120px;
-    height: 75px;
+    width: 150px;
+    /* height: 75px; */
   }
 
   .searchbar {

@@ -60,9 +60,9 @@ const Carousel = ({ images }) => {
   };
 
   return (
-    <section aria-label="Newest Photos" className="sm:hidden h-fit block">
+    <section aria-label="Newest Photos" className="sm:hidden h-fit ">
       <div
-        className=" relative aspect-square w-full overflow-x-hidden"
+        className=" relative aspect-square w-full  overflow-hidden"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
       >
@@ -77,13 +77,13 @@ const Carousel = ({ images }) => {
                 alt=""
                 width={400}
                 height={400}
-                className=" aspect-square w-[400px] "
+                className=" aspect-square w-[400px] object-cover"
               />
             </li>
           ))}
         </ul>
       </div>
-      <div className="indicators flex items-center mt-[5rem]">
+      <div className="indicators flex items-center mt-[2rem]">
         {images?.map((_, index) => (
           <div
             key={index}

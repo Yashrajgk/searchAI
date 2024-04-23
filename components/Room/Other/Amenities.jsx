@@ -11,7 +11,7 @@ const Amenities = ({ data }) => {
           <h3 className="mb-6 text-xl font-semibold ml-1">
             What this place offers
           </h3>
-          <div className="amenities grid grid-cols-2  sm:w-auto w-[80vw] ">
+          <div className="amenities grid grid-cols-2  sm:w-auto ">
             {amenities.map((amenity) => (
               <div className="flex my-2 gap-x-2" key={amenity._id}>
                 <div className="parent relative w-8 h-8">

@@ -153,7 +153,10 @@ const Reviews = ({ data }) => {
         </div>
         <br />
         <hr />
-        <h3 className="mb-1 text-xl font-semibold pt-4">{reviews.length}</h3>
+        <h3 className="mb-1 text-xl font-semibold pt-4">
+          {reviews.length}
+          <span> reviews</span>
+        </h3>
         <span className="font-normal text-sm text-gray-500">
           Average rating will appear after 3 reviews
         </span>
@@ -163,10 +166,10 @@ const Reviews = ({ data }) => {
         >
           {reviews.map((review, index) => (
             <div key={index} className="sm:mr-12 m-0 sm:block ">
-              <div className="review-header flex">
+              <div className="review-header flex items-center">
                 <div className="w-[48px] h-[48px] mr-4">
                   <img
-                    className="w-full h-full"
+                    className="w-full h-full rounded-full object-cover"
                     src={review.image}
                     alt="User Avatar"
                   />
@@ -199,10 +202,10 @@ const Reviews = ({ data }) => {
                 <p className="text-gray-600 font-[16px] leading-6 mb-6 sm:w-auto text-left w-[100%]">
                   {review.showFullComment
                     ? review.comment
-                    : `${review.comment.slice(0, 60)}...`}
-                  {review.comment.length > 60 && (
+                    : `${review.comment.slice(0, 80)}...`}
+                  {review.comment.length > 80 && (
                     <button
-                      className="text-blue-500 hover:text-blue-700 cursor-pointer ml-1"
+                      className="underline font-medium cursor-pointer ml-1"
                       onClick={() => toggleShowMore(index)}
                     >
                       {review.showFullComment ? "Show Less" : "Show More"}
