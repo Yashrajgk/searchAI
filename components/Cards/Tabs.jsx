@@ -12,15 +12,6 @@ import Image from "next/image";
 
 const Tabs = ({ data }) => {
   const router = useRouter();
-<<<<<<< Updated upstream
-  const [activeTab, setActiveTab] = useState(
-    data?.recommendations?.[0]?.recommendedProducts[0]?.roomCategory[0].toLowerCase()
-  );
-  const [isSticky, setIsSticky] = useState(false);
-
-  useEffect(() => {
-    setActiveTab(data?.recommendations?.[0]?.recommendedProducts[0]?.roomCategory[0].toLowerCase() )
-=======
 
   const [activeTab, setActiveTab] = useState("");
   const [isSticky, setIsSticky] = useState(false);
@@ -31,7 +22,6 @@ const Tabs = ({ data }) => {
         data?.recommendations?.[0]?.recommendedProducts[0]?.roomCategory[0]?.toLowerCase();
       setActiveTab(defaultActiveTab);
     }
->>>>>>> Stashed changes
   }, [data]);
 
   useEffect(() => {
