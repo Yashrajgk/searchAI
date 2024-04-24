@@ -61,9 +61,9 @@ const Expandedbar = ({ searchText, onClose, onSearch }) => {
   useEffect(() => {
     inputRef.current.focus();
   }, []);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const router = useRouter();
-  const handleRoute =async(item) => {
+  const handleRoute = async (item) => {
     const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getSingleProduct?id=${item._id}`;
     const response = await axios.get(url);
     const data = response.data;
@@ -71,15 +71,14 @@ const Expandedbar = ({ searchText, onClose, onSearch }) => {
     // router.push(`/product`);
     // router.push("/room/" + item.id);
   };
-  const handleclick = async (id, category) => {
-  }
+  const handleclick = async (id, category) => {};
   const path = usePathname();
   // useEffect(() => {
   //   console.log("mounts")
   //   const handleRouteChange = (url) => {
   //     console.log("router changing", url);
   //   };
-  
+
   //   Router.events.on("routeChangeStart", handleRouteChange);
   //   Router.events.on("routeChangeComplete",()=>{
   //     console.log("route changes")
@@ -139,7 +138,7 @@ const Expandedbar = ({ searchText, onClose, onSearch }) => {
               Engineering flooring
             </div>
             <div className="dropdown-item sm:font-medium font-base py-2 sm:text-lg  text-lg text-[#707072]">
-            Luxurious curtains
+              Luxurious curtains
             </div>
             <div className="dropdown-item sm:font-medium font-base py-2 sm:text-lg  text-lg text-[#707072]">
               Wallpaper for home
@@ -161,26 +160,32 @@ const Expandedbar = ({ searchText, onClose, onSearch }) => {
                 ? cacheddata
                 : []
               ).map((item) => (
-             <Link href={`/product/${item.productTitle}`}>
-                 <div
-                  key={item.id}
-                  className="col-span-1"
-                  onClick={() => handleRoute(item)}
-                >
-                  <div className="w-[170px] h-[170px]">
-                    <Image
-                      src={item.images[0]}
-                      width={170}
-                      height={170}
-                      alt="Product"
-                      className="w-[100%] h-[100%] object-fill"
-                    />
+                <Link href={`/product/${item.productTitle}`} onClick={onClose}>
+                  <div
+                    key={item.id}
+                    className="col-span-1"
+                    onClick={() => handleRoute(item)}
+                  >
+                    <div className="w-[170px] h-[170px]">
+                      <Image
+                        src={item.images[0]}
+                        width={170}
+                        height={170}
+                        alt="Product"
+                        className="w-[100%] h-[100%] object-fill"
+                      />
+                    </div>
+                    <div className="text-sm leading-6 text-black pt-[20px] text-[#000000]">
+                      {item.category}
+                    </div>
+                    <div className="text-sm leading-6 text-black  text-[#707072]">
+                      {item.collectionName}
+                    </div>
+                    <div className="text-sm leading-6 pt-[7px] font-medium text-black">
+                      {item.totalPrice}₹
+                    </div>
                   </div>
-                  <div className="text-sm leading-6 text-black pt-[20px] text-[#000000]">{item.category}</div>
-                  <div className="text-sm leading-6 text-black  text-[#707072]">{item.collectionName}</div>
-                  <div className="text-sm leading-6 pt-[7px] font-medium text-black">{item.totalPrice}₹</div>
-                </div>
-              </Link>
+                </Link>
               ))
             )}
           </div>

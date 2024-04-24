@@ -7,7 +7,8 @@ const ListContent = ({ parentCategory, items }) => {
   const [currentCategory, setCurrentCategory] = useState("");
 
   const handleClick = (value) => {
-    const newPath = `/${parentCategory}/${currentCategory}/${value.text}`;
+    const category = value.text.replace(/\s+/g, "-");
+    const newPath = `/${parentCategory}/${currentCategory}/${category}`;
     router.push(newPath);
   };
 
