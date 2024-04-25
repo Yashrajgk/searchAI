@@ -21,6 +21,7 @@ const Image = dynamic(() => import("../Imagechanger/Image"));
 const Phone = dynamic(() => import("./Phone"));
 const DoubleComp = dynamic(() => import("./DoubleComp"));
 const Trending = dynamic(() => import("./Trending"));
+const Suggestion = dynamic(() => import("./Suggestion"));
 import Dataslider from "./Dataslider";
 import { useDispatch, useSelector } from "react-redux";
 import { selectRecommendedProduct } from "../Features/Slices/recommendationSlice";
@@ -115,6 +116,8 @@ function Cards() {
       )}
       <Display />
       <Multicard />
+
+      <Suggestion/>
       {/* <Image /> */}
       {uniqueCategories &&
         (uniqueCategories.includes("Flooring") ? (

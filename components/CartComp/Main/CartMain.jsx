@@ -149,8 +149,8 @@ const CartMain = () => {
 
   return (
     <>
-      <div className="px-20 py-16 ">
-        <div className="grid grid-cols-12 gap-10 border-b-2">
+      <div className="px-20 pt-[6rem] pb-[3rem] ">
+        <div className="grid grid-cols-12 gap-10">
           <div className="col-span-8">
             {/* <h2 className="py-2 mb-6 text-2xl">Your Cart</h2>
           <div className="flex items-center justify-between border-b border-slate-400 text-slate-400 pb-3 font-semibold text-sm mb-4">
@@ -160,10 +160,10 @@ const CartMain = () => {
           </div> */}
 
             {/* <!-- parent div --> */}
-            <div className=" py-2 ml-12 mr-14">
+            <div className="py-2 ml-12 mr-14">
               {/* <!-- header section --> */}
               <div className="flex justify-between items-center mb-10">
-                <h1 className=" text-4xl leading-[1.33] font-[700] tracking-tight">
+                <h1 className=" text-[22px] leading-[1.33] font-[700] tracking-tight">
                   Shopping Details
                 </h1>
                 <div className="cursor-pointer hover:bg-gray-400 box-border rounded-xl">
@@ -217,9 +217,8 @@ const CartMain = () => {
                   onClick={() => {
                     handlePickupType("delivery");
                   }}
-                  className={`cursor-pointer box-border border rounded-sm ${
-                    pickup === "delivery" ? "border-black" : "border-gray-400"
-                  } h-24 w-[50%]`}
+                  className={`cursor-pointer box-border  border-[1.5px] ${pickup === "delivery" ? "border-black" : "border-[#e5e5e5]"
+                    } h-24 w-[50%]`}
                 >
                   <div className="flex px-6 py-5 h-24 items-center">
                     <div className="pr-5">
@@ -248,9 +247,8 @@ const CartMain = () => {
                   onClick={() => {
                     handlePickupType("collect");
                   }}
-                  className={`cursor-pointer box-border border rounded-sm ${
-                    pickup === "collect" ? "border-black" : "border-gray-400"
-                  } h-24 w-[50%]`}
+                  className={`cursor-pointer box-border border border-[1.5px] ${pickup === "collect" ? "border-black" : "border-[#e5e5e5]"
+                    } h-24 w-[50%]`}
                 >
                   <div className="flex px-6 py-5 h-24 items-center">
                     <div className="pr-5">
@@ -278,8 +276,8 @@ const CartMain = () => {
               {/*  code */}
               {cartStatus === "loading" && <p>Loading...</p>}
               {cartStatus === "failed" && <p>Error loading data from DB.</p>}
-              {cartStatus === "succeeded" && selectedItems ? (
-                selectedItems.items.map((item, index) => {
+              {cartStatus === "succeeded" && cartdata ? (
+                cartdata.items.map((item, index) => {
                   return (
                     <CartProduct
                       cartItem={item}
@@ -317,39 +315,41 @@ const CartMain = () => {
           {cartStatus === "loading" && <p>Loading...</p>}
           {cartStatus === "failed" && <p>Error loading data from DB.</p>}
           {cartStatus === "succeeded" && cartdata && (
-            <div className="col-span-4 sm:block bg-white  border-gray-300 rounded-lg  overflow-hidden hidden p-6  text-slate-600 ">
-              <h2 className="text-xl pb-3 font-bold">Order summary</h2>
+            <div className="col-span-4 sm:block bg-white  border-gray-300 rounded-lg  overflow-hidden hidden pt-[0.6rem]  text-black ">
+              <h2 className="text-xl pb-3 font-bold ">Order summary</h2>
               <div className="flex items-center justify-between  border-slate-500 pb-6 ">
-                <span>Products price </span>
-                <span className=" font-[700]">Rs.{totalPrice}</span>
+                <span className="text-black">Products price </span>
+                <span className="text-black font-[700]">Rs.{totalPrice}</span>
               </div>
               <div className="flex items-center justify-between ">
                 <span>Delivery charge </span>
                 <span>-</span>
               </div>
-              <p className=" text-sm border-b-4 border-black pb-6">
-                calculated at next step
+              <p className="text-xs text-[#767677] border-b-4 border-black pb-6">
+                calculated on distance and weight
               </p>
               <div className="flex items-center justify-between pb-4 mt-2">
-                <span>Subtotal </span>
+                <span className="text-black">Subtotal </span>
                 <span className="font-[700] text-black text-2xl">
                   Rs.{totalPrice}
                 </span>
               </div>
               <div className="flex items-center justify-between pb-4">
-                <span>Total weight </span>
-                <span>1.9 kg</span>
+                <span className="text-black">Total weight </span>
+                <span className="text-black font-[700]">1.9 kg</span>
               </div>
               <div
                 onClick={() => handleSchedular(!schedular)}
-                className={`border  p-7 text-black font-[600] w-[100%] h-28 pt-9 rounded-md ${
-                  schedular ? "border-black" : "border-slate-500"
-                }`}
+                className={`border border-[1.5px] p-[20px] w-[100%] h-auto ${schedular ? "border-black" : "border-[#e5e5e5]"
+                  }`}
               >
-                Make the most of delivery charges
+                <p className="text-black font-[600] ">Make the most of delivery charges</p>
+                <p className="text-[#757575] text-[12px] pt-[5px]">The current delivery price of your order is Rs. 99 for up to 5 kg.</p>
+
               </div>
+
               <button
-                className="border border-slate-500 p-5 text-white font-[700] w-[100%] h-28  my-5 flex items-center justify-between text-xl bg-[#0158a3] hover:bg-[#013fa3] rounded-md"
+                className="border border-slate-500 p-5 text-white font-[700] w-[100%] h-28  my-5 flex items-center justify-between text-xl bg-[#007b34] hover:bg-[#013fa3]"
                 onClick={() => setSideMenu(true)}
               >
                 Continue to checkout
@@ -384,8 +384,8 @@ const CartMain = () => {
                     <path d="M19.205 5.599c.9541.954 1.4145 2.2788 1.4191 3.6137 0 3.0657-2.2028 5.7259-4.1367 7.5015-1.2156 1.1161-2.5544 2.1393-3.9813 2.9729L12 20.001v-2.3516c.6699-.4304 1.9095-1.2834 3.1347-2.4084 1.8786-1.7247 3.4884-3.8702 3.4894-6.0264-.0037-.849-.2644-1.6326-.8333-2.2015-1.1036-1.1035-2.9413-1.0999-4.0445.0014l-1.7517 1.7448-1.7461-1.7462c-1.1165-1.1164-2.9267-1.1164-4.0431 0-1.6837 1.6837-.5313 4.4136.6406 6.0155.3487.4768.7386.9326 1.1472 1.3617L8 11.9982l2 .0057-.017 6-6-.0171.0056-2 2.7743.0079c-.5387-.5472-1.0629-1.1451-1.5311-1.7852-1.0375-1.4183-1.8594-3.1249-1.8597-4.9957-.0025-1.2512.3936-2.5894 1.419-3.6149 1.8976-1.8975 4.974-1.8975 6.8716 0l.3347.3347.336-.3347c1.8728-1.8722 4.9989-1.8727 6.8716 0z"></path>
                   </svg>
                 </span>
-                <div className=" underline">
-                  60 days and additional 30-day returns with IKEA Family
+                <div className="text-black  underline">
+                  60 days and additional 30-day returns with Ayatrio Family
                 </div>
               </div>
 
@@ -406,7 +406,7 @@ const CartMain = () => {
                     ></path>
                   </svg>
                 </span>
-                <div className="underline">
+                <div className=" text-black  underline">
                   Secure shopping with SSL data encryption
                 </div>
               </div>
@@ -430,7 +430,7 @@ const CartMain = () => {
               </h1>
               <ul className="list-disc	">
                 <h3 className="text-xl font-bold mt-5">
-                  Join IKEA Family for free
+                  Join Ayatrio Family for free
                 </h3>
                 <div className="ml-8">
                   <li>Get instant benefits</li>

@@ -130,7 +130,7 @@ const Delivery = () => {
   //   const delcharge = (subtotal * 20) / 100;
   //   const totlaCharge = parseFloat(subtotal) + parseFloat(delcharge);
   return (
-    <div className="px-20 py-16">
+    <div className="px-20  pt-[6rem] pb-[3rem] ">
       <div className="grid grid-cols-12 gap-10 border-b-2">
         <div className="col-span-8">
           {/* <h2 className="py-2 mb-6 text-2xl">Your Cart</h2>
@@ -141,19 +141,19 @@ const Delivery = () => {
           </div> */}
 
           {/* <!-- parent div --> */}
-          <div class=" py-2 ml-12 mr-14">
+          <div className=" py-2 ml-12 mr-14">
             {/* <!-- header section --> */}
-            <div class="flex justify-between items-center mb-10">
-              <h1 class=" text-4xl leading-[1.33] font-[700] tracking-tight">
+            <div className="flex justify-between items-center mb-10">
+              <h1 className=" text-[22px] leading-[1.33] font-[700] tracking-tight">
                 Delivery and collection
               </h1>
-              <div class="cursor-pointer hover:bg-gray-400 box-border rounded-xl">
+              <div className="cursor-pointer hover:bg-gray-400 box-border rounded-xl">
                 <svg
                   focusable="false"
                   viewBox="0 0 24 24"
                   width="24"
                   height="24"
-                  class=""
+                  className=""
                   aria-hidden="true"
                 >
                   <path
@@ -165,13 +165,13 @@ const Delivery = () => {
               </div>
             </div>
             {/* <!-- Address pin  --> */}
-            <div class="flex h-11 w-48">
+            <div className="flex h-11 w-48">
               <svg
                 focusable="false"
                 viewBox="0 0 24 24"
                 width="24"
                 height="24"
-                class="cart-ingka-svg-icon"
+                className="cart-ingka-svg-icon"
                 aria-hidden="true"
               >
                 <path d="M12.0001 11.2157c1.1046 0 2-.8954 2-2s-.8954-2-2-2c-1.1045 0-2 .8954-2 2s.8955 2 2 2z"></path>
@@ -182,13 +182,13 @@ const Delivery = () => {
                 ></path>
                 <path d="M14.0001 9.2157c0 1.1046-.8954 2-2 2-1.1045 0-2-.8954-2-2s.8955-2 2-2c1.1046 0 2 .8954 2 2z"></path>
               </svg>
-              <p class="w-full ml-3 font-[300] text-[15.5px]">
-                Your pincode <span class="underline">843146</span>
+              <p className="w-full ml-3 font-[300] text-[15.5px]">
+                Your pincode <span className="underline">843146</span>
               </p>
             </div>
 
             {/* <!-- order text --> */}
-            <div class="tracking-wide font-[700] text-[1.09rem] leading-6 mb-4">
+            <div className="tracking-wide font-[700] text-[1.09rem] leading-6 mb-4">
               How would you like to receive your order?
             </div>
             {/*devivery PIN CODE  */}
@@ -199,17 +199,17 @@ const Delivery = () => {
 
               {/* ----------------- */}
               <div className="">
-                <div className="bg-gray-300 flex justify-center items-center p-2 rounded-tr-md rounded-tl-md">
+                <div className="bg-[#e5e5e5] flex justify-center items-center p-[16px] rounded-tr-md rounded-tl-md">
                   <span className="p-1 mr-2">
                     <LiaWarehouseSolid size={30} />
                   </span>
                   <h3>
-                    <span className="text-lg font-bold text-black-500">
+                    <span className="text-[16px] font-semibold text-black">
                       {" "}
-                      Order online and collect from an IKEA store or a point
+                      Order online and collect from an Ayatrio store or a point
                       near you
                     </span>{" "}
-                    <a href="e" className="underline">
+                    <a href="e" className="text-[#707072] underline">
                       nearby Maharashtra 400001
                     </a>
                   </h3>
@@ -304,7 +304,7 @@ const Delivery = () => {
                             </p>
                             <p className="text-md font text-gray-500 py-2 w-full">
                               <span className="font-bold">
-                                IKEA Navi Mumbai
+                                Ayatrio Navi Mumbai
                               </span>{" "}
                               TTC,Thane Belapur Rd, Turbhe 400705 Mumbai
                             </p>
@@ -420,17 +420,17 @@ const Delivery = () => {
             </div>
 
             {/* <!-- Take option  --> */}
-            <div class="flex flex-row gap-5">
+            <div className="flex flex-row gap-5">
               {/* <!-- delivery  --> */}
-              {/* <div class="box-border border rounded-sm border-gray-400 h-24 w-[50%]">
-                <div class="flex px-6 py-5 h-24 items-center">
-                  <div class="pr-5">
+              {/* <div className="box-border border rounded-sm border-gray-400 h-24 w-[50%]">
+                <div className="flex px-6 py-5 h-24 items-center">
+                  <div className="pr-5">
                     <svg
                       focusable="false"
                       viewBox="0 0 24 24"
                       width="24"
                       height="24"
-                      class="cart-ingka-svg-icon"
+                      className="cart-ingka-svg-icon"
                       aria-hidden="true"
                     >
                       <path
@@ -440,21 +440,21 @@ const Delivery = () => {
                       ></path>
                     </svg>
                   </div>
-                  <div class="font-[700] text-[1rem] leading-[1.571rem]">
+                  <div className="font-[700] text-[1rem] leading-[1.571rem]">
                     Delivery
                   </div>
                 </div>
               </div> */}
               {/* <!-- collect --> */}
-              {/* <div class="box-border border rounded-sm border-gray-400 h-24 w-[50%]">
-                <div class="flex px-6 py-5 h-24 items-center">
-                  <div class="pr-5">
+              {/* <div className="box-border border rounded-sm border-gray-400 h-24 w-[50%]">
+                <div className="flex px-6 py-5 h-24 items-center">
+                  <div className="pr-5">
                     <svg
                       focusable="false"
                       viewBox="0 0 24 24"
                       width="24"
                       height="24"
-                      class="cart-ingka-svg-icon"
+                      className="cart-ingka-svg-icon"
                       aria-hidden="true"
                     >
                       <path
@@ -464,7 +464,7 @@ const Delivery = () => {
                       ></path>
                     </svg>
                   </div>
-                  <div class="font-[700] text-[1rem] leading-[1.571rem]">
+                  <div className="font-[700] text-[1rem] leading-[1.571rem]">
                     Collect
                   </div>
                 </div>
@@ -483,9 +483,9 @@ const Delivery = () => {
 
           <div className="">{/* CART1 */}</div>
         </div>
-        <div className="col-span-4 sm:block bg-white  border-gray-300 rounded-lg  overflow-hidden hidden p-6  text-slate-600 ">
+        <div className="col-span-4 sm:block bg-white  overflow-hidden hidden p-[0.6rem]  text-black ">
           <div className="flex justify-between">
-            <h3 className="text-xl font-bold">Your Order</h3>
+            <h3 className="text-xl font-bold text-black">Your Order</h3>
             <Link href={"/cart"} className="underline">
               {" "}
               Edit
@@ -503,7 +503,7 @@ const Delivery = () => {
                       width={249}
                       height={249}
                       alt={item.name}
-                      className="rounded-xl w-20 h-20 ml-8"
+                      className=" w-20 h-20"
                     />
                   );
                 })
@@ -516,29 +516,30 @@ const Delivery = () => {
           </div>
           <h2 className="text-xl pb-3 font-bold">Order summary</h2>
           <div className="flex items-center justify-between  border-slate-500 pb-6 ">
-            <span>Products price </span>
-            <span className=" font-[700]">Rs.{totalPrice}</span>
+            <span className="text-black">Products price </span>
+            <span className="text-black font-[700]">Rs.{totalPrice}</span>
           </div>
           <div className="flex items-center justify-between ">
-            <span>Delivery charge </span>
-            <span>Rs. {deliveryChoice}</span>
+            <span className="text-black">Delivery charge </span>
+            <span className="text-black">Rs. {deliveryChoice}</span>
           </div>
-          <p className=" text-sm border-b-4 border-black pb-6">
-            calculated at next step
+          <p className="text-xs text-[#767677] border-b-4 border-black pb-6">
+          calculated on distance and weight
           </p>
           <div className="flex items-center justify-between pb-4 mt-2">
-            <span>Subtotal </span>
+          <span className="text-black">Subtotal </span>
             <span className="font-[700] text-black text-2xl">
               Rs. {totalPrice + deliveryChoice}
             </span>
           </div>
           <div className="flex items-center justify-between pb-4">
-            <span>Total weight </span>
-            <span>1.9 kg</span>
+          <span className="text-black">Total weight </span>
+            <span className="text-black font-[700]">1.9 kg</span>
           </div>
-          <p className="border border-slate-500 p-7 text-black font-[600] w-[100%] h-28 pt-9 rounded-md ">
-            Make the most of delivery charges
-          </p>
+          <div className="border border-slate-500 p-[20px] w-[100%] h-auto">
+            <p className="text-black font-[600] ">Make the most of delivery charges</p>
+            <p className="text-[#757575] text-[12px] pt-[5px]">The current delivery price of your order is Rs. 99 for up to 5 kg.</p>
+          </div>
 
           {/* <div className="flex items-center justify-between py-4 font-bold">
             <span>Total </span>
@@ -567,8 +568,8 @@ const Delivery = () => {
                 <path d="M19.205 5.599c.9541.954 1.4145 2.2788 1.4191 3.6137 0 3.0657-2.2028 5.7259-4.1367 7.5015-1.2156 1.1161-2.5544 2.1393-3.9813 2.9729L12 20.001v-2.3516c.6699-.4304 1.9095-1.2834 3.1347-2.4084 1.8786-1.7247 3.4884-3.8702 3.4894-6.0264-.0037-.849-.2644-1.6326-.8333-2.2015-1.1036-1.1035-2.9413-1.0999-4.0445.0014l-1.7517 1.7448-1.7461-1.7462c-1.1165-1.1164-2.9267-1.1164-4.0431 0-1.6837 1.6837-.5313 4.4136.6406 6.0155.3487.4768.7386.9326 1.1472 1.3617L8 11.9982l2 .0057-.017 6-6-.0171.0056-2 2.7743.0079c-.5387-.5472-1.0629-1.1451-1.5311-1.7852-1.0375-1.4183-1.8594-3.1249-1.8597-4.9957-.0025-1.2512.3936-2.5894 1.419-3.6149 1.8976-1.8975 4.974-1.8975 6.8716 0l.3347.3347.336-.3347c1.8728-1.8722 4.9989-1.8727 6.8716 0z"></path>
               </svg>
             </span>
-            <div className=" underline">
-              60 days and additional 30-day returns with IKEA Family
+            <div className="text-black  underline">
+              60 days and additional 30-day returns with Ayatrio Family
             </div>
           </div>
 
@@ -589,7 +590,7 @@ const Delivery = () => {
                 ></path>
               </svg>
             </span>
-            <div className="underline">
+            <div className="text-black underline">
               Secure shopping with SSL data encryption
             </div>
           </div>
