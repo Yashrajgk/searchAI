@@ -3,13 +3,19 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import axios from 'axios'
+import axios from "axios";
+import Cookies from "js-cookie";
 const LoginComponent = () => {
   const router = useRouter();
 
   const checkUser = async () => {
     try {
-      const token = localStorage.getItem("token");
+      const token = Cookies.get("jwt");
+      console.log(token);
+      if (!token) {
+        router.push("/login");
+        return;
+      }
       const response = await axios.get(
         `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/user`,
         {
@@ -30,9 +36,9 @@ const LoginComponent = () => {
     }
   };
 
-  useEffect(() => {
-    checkUser();
-  }, []);
+  // useEffect(() => {
+  //   checkUser();
+  // }, []);
 
   const handleGoogleLogin = async () => {
     try {
@@ -67,20 +73,28 @@ const LoginComponent = () => {
 
             <div className="mt-[50px] w-full">
               <h1 className="text-lg font-semibold text-black">
-                Be Part a Ayatrio membership today. It's free to join? Get
-                the details.
+                Be Part a Ayatrio membership today. It's free to join? Get the
+                details.
               </h1>
 
               <ul className="list-disc p-5 ">
                 <li className="py-1 text-base">
-                  Follow your online orders, in-store buys, and access your purchase history
-                  and e-receipts </li>
-                <li className="py-1 text-base">Join community for
-                  live, Member-only Interior design events </li>
-                <li className="py-1 text-base">Access to Ayatrio Family offers</li>
-                <li className="py-1 text-base">Create your personal wishlist</li>
+                  Follow your online orders, in-store buys, and access your
+                  purchase history and e-receipts{" "}
+                </li>
+                <li className="py-1 text-base">
+                  Join community for live, Member-only Interior design events{" "}
+                </li>
+                <li className="py-1 text-base">
+                  Access to Ayatrio Family offers
+                </li>
+                <li className="py-1 text-base">
+                  Create your personal wishlist
+                </li>
               </ul>
-              <p className="text-base pt-1 mb-[15px]">... and a whole lot more!</p>
+              <p className="text-base pt-1 mb-[15px]">
+                ... and a whole lot more!
+              </p>
               <div className="flex flex-row gap-4">
                 <div className="  flex flex-col gap-4 w-6/12">
                   <Image
@@ -109,21 +123,24 @@ const LoginComponent = () => {
                     height={240}
                     src="/login/login4.jpg"
                   />
-
                 </div>
               </div>
             </div>
-            <div className="text-[10px] mt-[50px]"> <p >Ayatrio.com - Cookie Policy and Privacy Policy</p>
-              <p> © Inter Ayatrio Systems B.V. 1999-2024</p></div>
+            <div className="text-[10px] mt-[50px]">
+              {" "}
+              <p>Ayatrio.com - Cookie Policy and Privacy Policy</p>
+              <p> © Inter Ayatrio Systems B.V. 1999-2024</p>
+            </div>
           </div>
-
         </div>
 
         <div className="flex justify-center w-[430px]">
           <div className="flex pt-[150px] sm:px-[50px] px-[20px]">
             <div className="bg-white">
               <div className="mt-[30px] mb-[10px] w-full">
-                <h3 className="text-black text-3xl leading-10 font-semibold" >Wellcome to ayatrio family profile</h3>
+                <h3 className="text-black text-3xl leading-10 font-semibold">
+                  Wellcome to ayatrio family profile
+                </h3>
               </div>
 
               <div className="sm:block flex pt-[30px]">
@@ -131,7 +148,12 @@ const LoginComponent = () => {
                   onClick={handleGoogleLogin}
                   className="border-2 text-black border-solid  w-[100%] sm:h-14 h-8 gap-[5px] rounded-full  transition duration-300 font-semibold flex items-center justify-center mb-[15px]"
                 >
-                  <Image src='/icon/googlelogin.svg' width={20} height={20} alt="up" />
+                  <Image
+                    src="/icon/googlelogin.svg"
+                    width={20}
+                    height={20}
+                    alt="up"
+                  />
                   {/* <Google className="mr-2" /> */}
                   Login with Google
                 </button>
@@ -228,9 +250,7 @@ const LoginComponent = () => {
                   .{" "}
                 </span>
               </div>
-
             </div>
-
           </div>
         </div>
       </div>

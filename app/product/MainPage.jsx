@@ -85,7 +85,7 @@ const RoomPage = () => {
                 <Card data={data} />
               </div>
               <RoomInfo data={data} />
-              <Reviews data={data} />
+              <Reviews productId={data._id} data={data} />
             </div>
             <div className="md:basis-2/3 hidden  md:flex flex-col  ">
               <div className="md:sticky flex top-9 mb-16 ml-0">

@@ -3,6 +3,7 @@ import "../styles.css";
 import Carous from "@/components/Carousel/Carous";
 import Image from "next/image";
 import axios from "axios";
+import ReviewForm from "../../../app/profile/ReviewForm";
 
 const ratingsData = [
   {
@@ -77,24 +78,97 @@ const ratingsData = [
   },
 ];
 
-const Reviews = ({ data }) => {
+const Reviews = ({ productId, data }) => {
   const [reviews, setReviews] = useState([]);
+  const [user, setUser] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  console.log(data._id);
+
+  const checkUser = async () => {
+    try {
+      const token = localStorage?.getItem("token");
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/user`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      const userData = response.data;
+      if (userData.isAuthenticated) {
+        console.log("user data", userData);
+        setUser(userData.user);
+        setIsAuthenticated(true);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchReviews = async () => {
-      try {
-        const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getReview`
-        );
-        console.log("reviews", response.data);
-        setReviews(response.data);
-      } catch (error) {
-        console.error("Error fetching reviews:", error);
-      }
-    };
-
-    fetchReviews();
+    checkUser();
   }, []);
+  console.log(productId);
+  const fetchReviews = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getReview?productId=${productId}`
+      );
+      console.log("reviews", response.data);
+
+      setReviews(response.data);
+    } catch (error) {
+      console.error("Error fetching reviews:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchReviews();
+  }, [productId]);
+
+  const addReview = async (newReview) => {
+    if (isAuthenticated) {
+      try {
+        const response = await axios.post(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/createReview`,
+          {
+            productId: productId,
+            name: user.displayName,
+            userEmail: user.email,
+            rating: newReview.rating,
+            comment: newReview.comment,
+            image: user.image,
+          }
+        );
+        console.log(response.data);
+        fetchReviews();
+        // Add any necessary logic after successful submission
+      } catch (error) {
+        console.error("Error submitting review:", error);
+      }
+    } else {
+      alert("Login first");
+    }
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      const response = await axios.delete(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/deleteReview/${id}`
+      );
+      console.log(response);
+      fetchReviews();
+    } catch (error) {
+      console.error("Error deleting review:", error);
+    }
+  };
 
   const toggleShowMore = (index) => {
     const updatedReviews = [...reviews];
@@ -166,21 +240,28 @@ const Reviews = ({ data }) => {
         >
           {reviews.map((review, index) => (
             <div key={index} className="sm:mr-12 m-0 sm:block ">
-              <div className="review-header flex items-center">
-                <div className="w-[48px] h-[48px] mr-4">
-                  <img
-                    className="w-full h-full rounded-full object-cover"
-                    src={review.image}
-                    alt="User Avatar"
-                  />
+              <div className="flex justify-between">
+                <div className="review-header flex items-center">
+                  <div className="w-[48px] h-[48px] mr-4">
+                    <img
+                      className="w-full h-full rounded-full object-cover"
+                      src={review.image}
+                      alt="User Avatar"
+                    />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="font-semibold text-[16px]">
+                      {review.name}
+                    </span>
+                    <span className="font-normal text-[14px] text-gray-500">
+                      {review.location}
+                    </span>
+                  </div>
                 </div>
-                <div className="flex flex-col">
-                  <span className="font-semibold text-[16px]">
-                    {review.name}
-                  </span>
-                  <span className="font-normal text-[14px] text-gray-500">
-                    {review.location}
-                  </span>
+                <div className="flex items-center">
+                  <button onClick={() => handleDelete(review._id)}>
+                    Delete
+                  </button>
                 </div>
               </div>
               <div className="ratings flex mt-3">
@@ -216,6 +297,15 @@ const Reviews = ({ data }) => {
             </div>
           ))}
         </div>
+        {isLoading ? (
+          <>
+            <p>Loading...</p>
+          </>
+        ) : (
+          <>
+            <ReviewForm addReview={addReview} />
+          </>
+        )}
         <Carous data={data} />
       </div>
     </>

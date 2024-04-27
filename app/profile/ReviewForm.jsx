@@ -1,50 +1,38 @@
+"use client";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const ReviewForm = ({ user }) => {
+const ReviewForm = ({ addReview }) => {
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
 
-//   useEffect(() => {
-//     // Prefill the rating state with a default value if needed
-//     setRating(0);
-//   }, []);
+  //   useEffect(() => {
+  //     // Prefill the rating state with a default value if needed
+  //     setRating(0);
+  //   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    try {
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/createReview`, {
-        name: user.displayName,
-        rating,
-        comment,
-        image: user.image,
-      });
-      console.log(response.data);
-      setRating(0);
-      setComment("");
-      // Add any necessary logic after successful submission
-    } catch (error) {
-      console.error("Error submitting review:", error);
-    }
+    const newReview = {
+      rating: rating,
+      comment: comment,
+    };
+    addReview(newReview);
+    setRating(0);
+    setComment("");
   };
 
   return (
-    <div className="mt-8">
+    <div className="my-8">
       <h2 className="text-xl font-bold mb-4">Add Review</h2>
       <form onSubmit={handleSubmit}>
-        <input
-          type="hidden"
-          id="name"
-          value={user.displayName}
-        />
-        <input
-          type="hidden"
-          id="image"
-          value={user.image}
-        />
+        <input type="hidden" id="name" />
+        <input type="hidden" id="image" />
         <div className="mb-4">
-          <label htmlFor="rating" className="block text-gray-700 font-bold mb-2">
+          <label
+            htmlFor="rating"
+            className="block text-gray-700 font-bold mb-2"
+          >
             Rating
           </label>
           <input
@@ -59,7 +47,10 @@ const ReviewForm = ({ user }) => {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="comment" className="block text-gray-700 font-bold mb-2">
+          <label
+            htmlFor="comment"
+            className="block text-gray-700 font-bold mb-2"
+          >
             Comment
           </label>
           <textarea
