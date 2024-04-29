@@ -4,17 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 const Label = ({ labelData }) => {
-  const circled = [
-    {
-      top: 50,
-      left: 68,
-      productTitle: "Bedroom...",
-      productCategory: "Mountain view",
-      productPrice: 1900,
-    },
-  ];
-
-  const circledData = labelData || circled;
+  const circledData = Array.isArray(labelData) ? labelData : [labelData];
 
   const router = useRouter();
   const handleTab = () => {

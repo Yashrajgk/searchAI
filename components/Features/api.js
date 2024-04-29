@@ -7,6 +7,17 @@ const createApiEndpoint = (endpoint) => `${BASE_URL}/${endpoint}`;
 //   var id = localStorage.getItem("deviceId");
 //   // console.log("id",id);
 // }
+
+export const fetchAllProducts = async (limit) => {
+  try {
+    const response = await axios.get(createApiEndpoint(`products?limit=${limit}`));
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    throw error; // Rethrow the error to handle it in the calling code if needed
+  }
+};
+
 export const fetchRecommendedProduct = async () => {
   let id;
   if (typeof window !== "undefined") {

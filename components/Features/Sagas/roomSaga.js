@@ -7,7 +7,7 @@ function* fetchRoomData(action) {
     // Fetch product data
     const response = yield call(
       axios.get,
-      ` ${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getSingleProduct?id=${action.payload}`
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getSingleProduct?id=${action.payload}`
     );
 
     // Dispatch action to set room data
@@ -16,6 +16,10 @@ function* fetchRoomData(action) {
     // Extract product ID and update popularity
     const productId = action.payload;
     yield call(updateProductPopularity, productId);
+
+    // Send preferences to the server
+    yield call(sendPreferences, response.data); // Assuming productId is related to preferences
+
   } catch (error) {
     console.error("Error fetching room data:", error);
     yield put(setRoomData({ roomData: [], status: "failed" }));
@@ -32,6 +36,31 @@ function* updateProductPopularity(productId) {
     console.log("Product popularity updated successfully.");
   } catch (error) {
     console.error("Error updating product popularity:", error);
+  }
+}
+
+function* sendPreferences(productData) {
+  try {
+    let id;
+    if (typeof window !== "undefined") {
+      id = localStorage.getItem("deviceId");
+    }
+
+    // Use `id` instead of `deviceId`
+    yield call(
+      axios.post,
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/preferences`,
+      {
+        deviceId: id, // Corrected variable name
+        userPreferredCategories: [
+          { name: productData.category, subcategories: [productData.subcategory] }
+        ]
+      }
+    );
+    console.log("Preferences sent successfully.");
+  } catch (error) {
+    console.error("Error sending preferences:", error);
+    // You might want to dispatch an action to handle the error here
   }
 }
 

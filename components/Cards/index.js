@@ -45,8 +45,7 @@ function Cards() {
     }
 
     if (selectData) {
-      setRecommended(selectData);
-      console.log("selectData", selectData);
+      setRecommended(selectData.recommendations?.recommendedProducts);
     }
 
     setLoading(false);
@@ -56,20 +55,21 @@ function Cards() {
     }
   }, [dispatch, selectData, dataFetched]); // Include dataFetched in the dependency array
 
+
   const Partdata = (cat) => {
     return (
-      recommended?.recommendations?.[0]?.recommendedProducts?.filter(
+      recommended.filter(
         (item) => item.category === `${cat}`
       ) || []
     );
   };
 
   const categories =
-    recommended?.recommendations?.[0]?.recommendedProducts?.map(
+    recommended?.map(
       (item) => item.category
     ) || [];
   let uniqueCategories = [...new Set(categories)];
-  console.log(uniqueCategories);
+  // console.log("uniqueCategories", uniqueCategories);
   const MemoizedMainSlider = useMemo(() => <NewMainSlider />, []);
   const MemoizedProfileContent = useMemo(() => <Profile />, []);
   const MemoizedTrendingProducts = useMemo(() => <Trending />, []);
@@ -97,7 +97,16 @@ function Cards() {
       <Trending />
 
       <RoomCard />
-      {uniqueCategories && uniqueCategories.includes("Flooring") ? (
+      {uniqueCategories?.map((item, index) => (
+        <Dataslider
+          key={item}
+          category={item}
+          sliderIndex={index}
+          data={Partdata(item)}
+          ref={datasliderRefs.current[index]}
+        />
+      ))}
+      {/* {uniqueCategories && uniqueCategories.includes("Flooring") ? (
         <>
           <Dataslider
             category={"Flooring"}
@@ -113,13 +122,13 @@ function Cards() {
             data={Partdata("Wallpaper")}
           />
         </>
-      )}
+      )} */}
       <Display />
       <Multicard />
 
       <Suggestion/>
       {/* <Image /> */}
-      {uniqueCategories &&
+      {/* {uniqueCategories &&
         (uniqueCategories.includes("Flooring") ? (
           <>
             <Dataslider
@@ -166,14 +175,14 @@ function Cards() {
             data={Partdata("Blinds")}
           />
         </>
-      )}
+      )} */}
 
       <div className="w-full sm:px-[50px] px-[20px] py-20  h-auto">
         {/* <Imagechanger /> */}
       </div>
 
       {MemoizedProfileContent}
-      <Tabs data={recommended} />
+      <Tabs />
       <Phone />
       <Footer />
     </div>

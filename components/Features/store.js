@@ -21,6 +21,7 @@ import imageChangerReducer from "./Slices/ImagechangerSlice";
 import displayReducer from "./Slices/displaySlice";
 import musicReducer from "./Slices/musicSectionSlice";
 import firstImageChangerReducer from "./Slices/firstImageChangerSlice";
+import allProductsReducer from "./Slices/productSlice";
 
 import filteredProductReducer from "./Slices/FilteredProduct";
 const sagaMiddleware = createSagaMiddleware();
@@ -67,6 +68,7 @@ export const store = configureStore({
     music: musicReducer,
     firstImageChanger: firstImageChangerReducer,
     filteredProduct: filteredProductReducer,
+    allProducts: allProductsReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(sagaMiddleware),
