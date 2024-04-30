@@ -12,8 +12,10 @@ const TabImage = ({ src, alt, width, height, labelData }) => {
         width={width}
         height={height}
       />
-      <div className="carcular-conui top-16 left-16  absolute rounded-full w-[30px] h-[30px]">
-        <Label labelData={labelData} />
+      <div className="cursor-pointer">
+        <div class="border-2 border-neutral-300 hover:border-white top-16 left-16 absolute hover:bg-[rgba(0,0,0,0.3)] rounded-full size-[30px] flex items-center justify-center transition-all duration-200 before:content-[''] before:size-3 before:bg-white  before:rounded-full before:hover:size-2 before:transition-all before:duration-200">
+          <Label labelData={labelData} />
+        </div>
       </div>
     </div>
   );
