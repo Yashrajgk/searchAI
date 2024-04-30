@@ -214,8 +214,9 @@ function Header({ howMuchScrolled }) {
                             {value.label}
                           </p>
                         </Link>
-                        { hoveredIndex === idx && value.asideSectionList && (
-                          <Asidebox asideSectionList={value.asideSectionList} />
+                        { hoveredIndex === idx && (
+                          // <Asidebox asideSectionList={value.asideSectionList} />
+                          <Asidebox hoveredIndex={hoveredIndex} />
                         )}
                         {value.label === "Shop by rooms" && hoveredIndex === idx && <Midsection />}
                       </div>

@@ -123,7 +123,7 @@ const Tabs = () => {
           <h2 className="text-xl font-bold mb-5">More ideas and inspiration</h2>
         </div>
         <div
-          className={` py-2.5 bloc-tabsnone flex flex-row tabcategory ${isSticky ? "sticky-tabcategory" : ""
+          className={` py-2.5 bloc-tabsnone   flex flex-row tabcategory ${isSticky ? "sticky-tabcategory" : ""
             }`}
           style={{ overflowX: "auto", WebkitOverflowScrolling: "touch" }}
         >

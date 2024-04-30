@@ -1,0 +1,178 @@
+export const homeDecorCategoryData = [
+  {
+    categoryId: 1,
+    categoryHeading: "Decor",
+    categoryData: [
+      {
+        label: "Vases",
+        image: "https://source.unsplash.com/featured/?bedroom",
+      },
+      {
+        label: "Floral Decor",
+        image: "https://source.unsplash.com/featured/?bedroom",
+      },
+      {
+        label: "Candle Stands",
+        image: "https://source.unsplash.com/featured/?bedroom",
+      },
+      {
+        label: "Lamps Lighting",
+        image: "https://source.unsplash.com/featured/?bedroom",
+      },
+      {
+        label: "Clocks",
+        image: "https://source.unsplash.com/featured/?bedroom",
+      },
+      {
+        label: "Decorative Accents",
+        image: "https://source.unsplash.com/featured/?bedroom",
+      },
+      {
+        label: "Pooja Essentials",
+        image: "https://source.unsplash.com/featured/?bedroom",
+      },
+      {
+        label: "Pouffes & Stools",
+        image: "https://source.unsplash.com/featured/?bedroom",
+      },
+      {
+        label: "Accent Furnitures",
+        image: "https://source.unsplash.com/featured/?bedroom",
+      },
+    ],
+  },
+  {
+    categoryId: 2,
+    categoryHeading: "Wallcovering",
+    categoryData: [
+      {
+        label: "Window Curtains",
+        image: "https://source.unsplash.com/featured/?bedroom",
+      },
+      {
+        label: "Curtain Accessories",
+        image: "https://source.unsplash.com/featured/?bedroom",
+      },
+      {
+        label: "Door-curtains",
+        image: "https://source.unsplash.com/featured/?bedroom",
+      },
+    ],
+  },
+  {
+    categoryId: 3,
+    categoryHeading: "Bed and Dining",
+    categoryData: [
+      {
+        label: "Bedsheet Sets",
+        image: "https://source.unsplash.com/featured/?bedroom",
+      },
+      {
+        label: "Cushion & Covers",
+        image: "https://source.unsplash.com/featured/?bedroom",
+      },
+      {
+        label: "Table Covers ",
+        image: "https://source.unsplash.com/featured/?bedroom",
+      },
+      {
+        label: "Bedcovers",
+        image: "https://source.unsplash.com/featured/?bedroom",
+      },
+      {
+        label: "Dinnerware",
+        image: "https://source.unsplash.com/featured/?bedroom",
+      },
+      {
+        label: "Diwan Sets",
+        image: "https://source.unsplash.com/featured/?bedroom",
+      },
+      {
+        label: "Drinkware",
+        image: "https://source.unsplash.com/featured/?bedroom",
+      },
+      {
+        label: "Barware",
+        image: "https://source.unsplash.com/featured/?bedroom",
+      },
+    ],
+  },
+  { 
+    categoryId: 4,
+    categoryHeading: "Bath Linen",
+    categoryData: [
+      {
+        label: "Bath Towels",
+        image: "https://source.unsplash.com/featured/?bedroom",
+      },
+      {
+        label: "Face Towels",
+        image: "https://source.unsplash.com/featured/?bedroom",
+      },
+      {
+        label: "Bath Towels",
+        image: "https://source.unsplash.com/featured/?bedroom",
+      },
+      {
+        label: "Hand Towels",
+        image: "https://source.unsplash.com/featured/?bedroom",
+      },
+      {
+        label: "Bath Mats",
+        image: "https://source.unsplash.com/featured/?pillow",
+      },
+      {
+        label: "Soap Dispensers",
+        image: "https://source.unsplash.com/featured/?bedroom",
+      },
+      {
+        label: "Laundry Basket",
+        image: "https://source.unsplash.com/featured/?bedroom",
+      },
+    ],
+  },
+  {
+    categoryId: 5,
+    categoryHeading: "Kitchen",
+    categoryData: [
+      {
+        label: "Kitchenware",
+        image: "https://source.unsplash.com/featured/?bedroom",
+      },
+      {
+        label: "Kitchen Linen",
+        image: "https://source.unsplash.com/featured/?bedroom",
+      },
+      {
+        label: "Cooking ",
+        image: "https://source.unsplash.com/featured/?bedroom",
+      },
+      {
+        label: "Kitchen Storage ",
+        image: "https://source.unsplash.com/featured/?pilow",
+      },
+    ],
+  },
+  {
+    categoryId: 6,
+    categoryHeading: "Indoor Garden",
+    categoryData: [
+      {
+        label: "Artificial Plants & Flowers",
+        image: "https://source.unsplash.com/featured/?bedroom",
+      },
+      {
+        label: "Live Plants",
+        image: "https://source.unsplash.com/featured/?bedroom",
+      },
+      {
+        label: "Plant Stands",
+        image: "https://source.unsplash.com/featured/?bedroom",
+      },
+      {
+        label: "Pots & Planters",
+        image: "https://source.unsplash.com/featured/?bedroom",
+      },
+    ],
+  },
+];
