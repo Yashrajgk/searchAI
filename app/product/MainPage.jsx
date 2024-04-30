@@ -31,6 +31,10 @@ const RoomPage = () => {
     if (sessionStorage?.getItem("roomData")) {
       let cachedData = JSON.parse(sessionStorage?.getItem("roomData"));
       setData(cachedData);
+      dispatch({
+        type: "FETCH_IMAGE_DATA",
+        payload: cachedData?.productImages[0]?.color,
+      });
     }
   }, [selectedData]);
   console.log(data);

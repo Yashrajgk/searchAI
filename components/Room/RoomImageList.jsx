@@ -2,16 +2,21 @@ import React from "react";
 import Image from "next/image";
 
 import "./styles.css";
+import { useSelector } from "react-redux";
+import { selectProductImages } from "../Features/Slices/imageDataSlice";
 
-export default function RoomImageList({ images }) {
+export default function RoomImageList() {
+  const data = useSelector(selectProductImages);
+  console.log(data);
   return (
     <>
-
-
       <div className="imggallery mt-[50px]  w-[65vw]">
         <div className="sm:grid hidden sm:grid-cols-2 sm:grid-rows-2 gap-3">
-          {images?.map((image, index) => (
-            <div key={index} className={`sm:col-span-1 sm:row-start-${index + 1}`}>
+          {data[0]?.images?.map((image, index) => (
+            <div
+              key={index}
+              className={`sm:col-span-1 sm:row-start-${index + 1}`}
+            >
               <Image
                 src={image}
                 alt={`Room Image ${index + 1}`}

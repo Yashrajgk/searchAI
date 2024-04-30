@@ -159,14 +159,16 @@ const Reviews = ({ productId, data }) => {
   };
 
   const handleDelete = async (id) => {
-    try {
-      const response = await axios.delete(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/deleteReview/${id}`
-      );
-      console.log(response);
-      fetchReviews();
-    } catch (error) {
-      console.error("Error deleting review:", error);
+    if (isAuthenticated) {
+      try {
+        const response = await axios.delete(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/deleteReview/${id}`
+        );
+        console.log(response);
+        fetchReviews();
+      } catch (error) {
+        console.error("Error deleting review:", error);
+      }
     }
   };
 
@@ -258,11 +260,13 @@ const Reviews = ({ productId, data }) => {
                     </span>
                   </div>
                 </div>
-                <div className="flex items-center">
-                  <button onClick={() => handleDelete(review._id)}>
-                    Delete
-                  </button>
-                </div>
+                {isAuthenticated && user.email === review.userEmail && (
+                  <div className="flex items-center">
+                    <button onClick={() => handleDelete(review._id)}>
+                      Delete
+                    </button>
+                  </div>
+                )}
               </div>
               <div className="ratings flex mt-3">
                 {[...Array(review.rating)].map((_, i) => (

@@ -16,9 +16,10 @@ import { watchFetchImagechangerData } from "./ImageChangerSaga";
 import { watchFetchDisplayData } from "./displaySaga";
 import { watchFetchMusicData } from "./musicSaga";
 import { watchFetchFirstImgChangerData } from "./firstImageChangerSaga";
-
 import { watchFilterProducts } from "./FilteredProductSaga";
 import { watchFetchAllProducts } from "./productSaga";
+import { watchFetchImageData } from "./imageDataSaga";
+
 export default function* rootSaga() {
   yield all([
     watchFetchRecommendedProduct(),
@@ -39,5 +40,6 @@ export default function* rootSaga() {
     watchFetchFirstImgChangerData(),
     watchFilterProducts(),
     watchFetchAllProducts(),
+    watchFetchImageData(),
   ]);
 }

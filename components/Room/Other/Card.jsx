@@ -16,6 +16,7 @@ import {
 import "../styles.css";
 import axios from "axios";
 import Image from "next/image";
+import { selectProductImages } from "@/components/Features/Slices/imageDataSlice";
 
 const Card = ({ data }) => {
   const quantity = useSelector(selectQuantity);
@@ -25,6 +26,8 @@ const Card = ({ data }) => {
   const [pricestate, setpricestate] = useState(0);
   const [coststate, setcoststate] = useState(7000);
   const [rollstate, setrollstate] = useState(0);
+  const [selectedColor, setSelectedColor] = useState();
+  const dispatch = useDispatch();
 
   const [visible, setVisible] = useState(false);
   const handleClick = () => {
@@ -45,7 +48,7 @@ const Card = ({ data }) => {
     priceCal();
   }, [widthstate, heightstate, coststate]);
 
-  const colorSep = data?.colors?.[0]?.split(",");
+  const colorSep = data.productImages;
 
   const roomData = useSelector(selectRoomData);
   console.log(roomData);
@@ -55,6 +58,15 @@ const Card = ({ data }) => {
     var id = localStorage.getItem("deviceId");
     console.log("deviceId : ", id);
   }
+
+  const handleColor = (color) => {
+    setSelectedColor(color);
+    dispatch({
+      type: "FETCH_IMAGE_DATA",
+      payload: color,
+    });
+  };
+
   const postUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/cart`;
   const postRoomData = async () => {
     try {
@@ -158,26 +170,29 @@ const Card = ({ data }) => {
           <div className="colorContainer flex flex-col mt-[30px] sm:w-auto w-[80vw]">
             <h1 className="mb-2 font-bold">Colours</h1>
             <div className="colors flex gap-3">
-              {colorSep?.map((color, index) => (
+              {colorSep?.map((item, index) => (
                 <div
                   key={index}
+                  onClick={() => handleColor(item.color)}
                   className={`
-                    w-[60px]
-                    h-[60px]
-                    border-b-2
-                    border-black
-                    text-gray-900
-                    text-center 
-                    text-xs
-                    flex 
-                    justify-center
-                    items-center
-                    `}
+      w-[60px]
+      h-[60px]
+      border-b-2
+      border-black
+      text-gray-900
+      text-center 
+      text-xs
+      flex 
+      justify-center
+      items-center
+      cursor-pointer
+      ${selectedColor === item.color ? "border-2 border-green-500" : ""}
+    `}
                   style={{
-                    backgroundColor: color,
+                    backgroundColor: item.color,
                   }}
                 >
-                  {color}
+                  {item.color}
                 </div>
               ))}
             </div>
