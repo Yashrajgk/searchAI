@@ -2,8 +2,8 @@ import React from "react";
 import Image from "next/image";
 const Phone = () => {
   return (
-    <div className="px-[50px]">
-      <h1 className="font-bold xl:text-4xl text-xl py-4">
+    <div className="px-[30px] sm:px-[50px]">
+      <h1 className="font-bold xl:text-4xl text-2xl py-4">
         Ayatrio is a global leader in life at home.
       </h1>
 
