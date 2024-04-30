@@ -23,10 +23,10 @@ const Label = ({ labelData }) => {
                 className="flex flex-col basis-3/4 w-24 flex-grow relative p-2.5 mr-1"
                 key={idx}
               >
-                <h2 className="font-bold pt-1 pr-2">{data.productTitle}</h2>
-                <p className="font-normal pb-2">{data.productCategory}</p>
+                <h2 className="font-bold pt-1 pr-2">{data?.productTitle}</h2>
+                <p className="font-normal pb-2">{data?.productCategory}</p>
                 <p className="font-bold bg-yellow-400 h-8 w-16 pl-2 main">
-                  ₹{data.productPrice}
+                  ₹{data?.productPrice}
                 </p>
               </div>
             ))}
