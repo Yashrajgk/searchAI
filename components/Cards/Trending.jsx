@@ -43,7 +43,7 @@ const Trending = () => {
   const swiperOptions2 = {
     slidesPerView: 4.08,
     centeredSlides: false,
-    spaceBetween: 1,
+    spaceBetween: 5,
     modules: [Pagination, Scrollbar, Mousewheel, FreeMode],
     navigation: {
       nextEl: ".custom-next-button",
@@ -98,16 +98,16 @@ const Trending = () => {
           breakpoints={{
             300: {
               slidesPerView: 1.2,
-              spaceBetween: 5,
+              spaceBetween: 10,
             },
 
             640: {
               slidesPerView: 2,
-              spaceBetween: 5,
+              spaceBetween: 10,
             },
             1024: {
               slidesPerView: 4,
-              spaceBetween: 5,
+              spaceBetween: 10,
             },
           }}
           allowSlideNext={true}

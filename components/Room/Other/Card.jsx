@@ -135,7 +135,7 @@ const Card = ({ data }) => {
   };
   return (
     <>
-      <div className="flex justify-start gap-1 mt-5 sm:w-[25vw] w-[100%] md:ml-[45px] ml-0">
+      <div className="flex justify-start gap-1 mt-5 md:full w-[100%] ml-0">
         <div className=" w-[100%] prefence-text">
           <div className="textHolders flex flex-col">
             <h1 className="text-2xl md:mt-5 font-bold mb-3">
@@ -199,7 +199,7 @@ const Card = ({ data }) => {
           </div>
 
           {/* calculations */}
-          <div className="border-black w-[100%] sm:w-[25vw] mt-[30px] bg-zinc-100 relative">
+          <div className="border-black w-[100%] sm:w-full mt-[30px] bg-zinc-100 relative">
             <div className="flex flex-row">
               <div
                 className="w-[1px] h-full bg-[#e5e7eb] absolute"

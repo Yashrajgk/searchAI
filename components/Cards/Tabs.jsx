@@ -14,6 +14,7 @@ import { selectAllProducts } from "../Features/Slices/productSlice";
 
 const Tabs = () => {
   const router = useRouter();
+<<<<<<< Updated upstream
   const dispatch = useDispatch();
   const selectData = useSelector(selectAllProducts);
   const [data, setData] = useState([]);
@@ -36,6 +37,9 @@ const Tabs = () => {
 
     setLoading(false);
   }, [dispatch, selectData, dataFetched]); // Include dataFetched in the dependency array
+=======
+  console.log({data});
+>>>>>>> Stashed changes
 
   const [activeTab, setActiveTab] = useState("");
   const [isSticky, setIsSticky] = useState(false);

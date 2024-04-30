@@ -79,10 +79,10 @@ const RoomPage = () => {
   }, []);
   return (
     <>
-      <div className="container-rooms flex sm:block items-center ">
-        <div className="sm:pl-[50px] sm:pr-0 px-[20px] mt-[65px]">
-          <div className="flex sm:flex-row flex-col">
-            <div className="sm:basis-2/3 flex flex-col  sm:flex-grow">
+      <div className="container-rooms flex sm:block items-center mt-[60px]">
+        <div className="sm:px-[50px] px-[20px]">
+          <div className="flex sm:flex-row sm:justify-between gap-[5vw] flex-col">
+            <div className="flex flex-col md:w-[60vw]">
               <RoomImageList images={data?.images} />
               <ImageCaresoul images={data?.images} />
               <div className="block md:hidden">
@@ -91,7 +91,7 @@ const RoomPage = () => {
               <RoomInfo data={data} />
               <Reviews productId={data._id} data={data} />
             </div>
-            <div className="md:basis-2/3 hidden  md:flex flex-col  ">
+            <div className=" hidden  md:flex flex-col  w-[30vw]">
               <div className="md:sticky flex top-9 mb-16 ml-0">
                 <Card data={data} />
               </div>

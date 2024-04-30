@@ -15,7 +15,7 @@ import { usePathname } from "next/navigation";
 import TopHeader from "./TopHeader";
 import dynamic from "next/dynamic";
 import { selectQuantity } from "../Features/Slices/calculationSlice";
-import { headerLinks } from "@/Model/Dropdown/AsideData/AsideData";
+import { AsideSectionList, headerLinks } from "@/Model/Dropdown/AsideData/AsideData";
 import Midsection from "./Midsection/Midsection";
 import { useSelector } from "react-redux";
 import { MenuIcon, X } from "lucide-react";
@@ -139,14 +139,14 @@ function Header({ howMuchScrolled }) {
 
   return (
     <div className="">
-      {homeRoute === pathname && typeof window !== "undefined" ? (
+      {(homeRoute === pathname  || pathname.includes('/product/') || pathname.includes('/products/')) && typeof window !== "undefined" ? (
         typeof window !== "undefined" && window.scrollY < 20 ? (
           <TopHeader />
         ) : null
       ) : null}
       <div
         className={`fixed w-full sm:bg-none ${
-          homeRoute === pathname
+          (homeRoute === pathname  || pathname.includes('/product/'))
             ? typeof window !== "undefined" && window.scrollY < 20
               ? "md:top-[30px] top-[0px]"
               : "top-0"
@@ -214,10 +214,10 @@ function Header({ howMuchScrolled }) {
                             {value.label}
                           </p>
                         </Link>
-                        {idx < 2 && hoveredIndex === idx && (
-                          <Asidebox hoveredIndex={hoveredIndex} />
+                        { hoveredIndex === idx && value.asideSectionList && (
+                          <Asidebox asideSectionList={value.asideSectionList} />
                         )}
-                        {idx === 2 && hoveredIndex === idx && <Midsection />}
+                        {value.label === "Shop by rooms" && hoveredIndex === idx && <Midsection />}
                       </div>
                     ))}
                   </nav>

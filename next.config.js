@@ -83,6 +83,10 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "unsplash.com",
+      },
+      {
+        protocol: "https",
         hostname: "ecom-data3.s3.ap-south-1.amazonaws.com",
       },
       {

@@ -49,7 +49,7 @@ const RoomCard = () => {
             >
               {gallary.length > 0 ? (
                 <>
-                  <div className="parent relative w-full aspect-square ">
+                  <div className="parent relative w-full h-[812px]">
                     <Image
                       className="child object-cover rounded-sm"
                       src={gallary[0].items[0].img}
