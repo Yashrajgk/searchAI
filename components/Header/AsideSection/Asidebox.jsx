@@ -39,7 +39,7 @@ const Asidebox = (props) => {
       {
         asideCategory && (
           <div className="absolute top-[3.5rem] left-0 bg-white flex noto-sans-200 transition-all duration-300 ease-linear w-full">
-            <aside className=" w-1/4 p-4 border-r space-y-2">
+            <aside className=" w-1/6 p-4 border-r space-y-2">
               {asideCategory?.map((value, idx) => (
                 <Link
                   key={idx}
