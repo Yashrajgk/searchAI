@@ -10,7 +10,7 @@ export default function RoomImageList() {
   console.log(data);
   return (
     <>
-      <div className="imggallery mt-[50px]">
+      <div className="imggallery mt-[50px] w-[60vw]">
         <div className="sm:grid hidden sm:grid-cols-2 sm:grid-rows-2 gap-3">
           {data[0]?.images?.map((image, index) => (
             <div
@@ -20,8 +20,8 @@ export default function RoomImageList() {
               <Image
                 src={image}
                 alt={`Room Image ${index + 1}`}
-                width={400}
-                height={400}
+                width={800}
+                height={800}
                 className="sm:w-full aspect-square object-cover"
               />
             </div>

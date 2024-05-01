@@ -139,14 +139,14 @@ function Header({ howMuchScrolled }) {
 
   return (
     <div className="">
-      {(homeRoute === pathname  || pathname.includes('/product/') || pathname.includes('/products/')) && typeof window !== "undefined" ? (
+      {homeRoute === pathname  && typeof window !== "undefined" ? (
         typeof window !== "undefined" && window.scrollY < 20 ? (
           <TopHeader />
         ) : null
       ) : null}
       <div
         className={`fixed w-full sm:bg-none ${
-          (homeRoute === pathname  || pathname.includes('/product/'))
+          homeRoute === pathname 
             ? typeof window !== "undefined" && window.scrollY < 20
               ? "md:top-[30px] top-[0px]"
               : "top-0"
@@ -205,7 +205,7 @@ function Header({ howMuchScrolled }) {
                           onClick={toggleDropdown}
                         >
                           <p
-                            className={`block p-2 py-3 text-lg font-medium border-b-2 ${
+                            className={`block p-2 py-4 text-lg font-medium border-b-2 ${
                               hoveredIndex === idx
                                 ? "border-black"
                                 : "border-transparent"
@@ -214,8 +214,9 @@ function Header({ howMuchScrolled }) {
                             {value.label}
                           </p>
                         </Link>
-                        { hoveredIndex === idx && value.asideSectionList && (
-                          <Asidebox asideSectionList={value.asideSectionList} />
+                        { hoveredIndex === idx && (
+                          // <Asidebox asideSectionList={value.asideSectionList} />
+                          <Asidebox hoveredIndex={hoveredIndex} />
                         )}
                         {value.label === "Shop by rooms" && hoveredIndex === idx && <Midsection />}
                       </div>

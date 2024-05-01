@@ -83,8 +83,7 @@ const Card = ({ data }) => {
       };
 
       const response = await axios.post(postUrl, postData);
-      if (response.status === 200) alert("Product added");
-      console.log(response);
+      if (response.status === 200) console.log(response);
     } catch (error) {
       console.error("Error posting room data:", error);
     }
@@ -135,7 +134,7 @@ const Card = ({ data }) => {
   };
   return (
     <>
-      <div className="flex justify-start gap-1 mt-5 md:full w-[100%] ml-0">
+      <div className="flex justify-start md:min-w-[25vw] gap-1 mt-5 w-[100%] ml-0">
         <div className=" w-[100%] prefence-text">
           <div className="textHolders flex flex-col">
             <h1 className="text-2xl md:mt-5 font-bold mb-3">

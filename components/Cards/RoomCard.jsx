@@ -40,16 +40,16 @@ const RoomCard = () => {
     <>
       <div className="sm:px-[50px] px-[20px] flex justify-between mx-auto my-8 ">
         <div className=" w-full flex justify-center ">
-          <div className="w-full grid grid-cols-2 lg:grid-cols-4 gap-x-4 auto-rows-fr">
+          <div className="w-full lg:h-[712px] grid grid-cols-2 lg:grid-cols-4 gap-x-4 auto-rows-fr">
             {/* 1 */}
             <div
-              className="parent col-start-1 col-end-3 row-start-1 mb-4 lg:mb-0  h-full row-end-8
+              className="parent col-start-1 col-end-3 row-start-1 mb-4 lg:mb-0 row-end-8
               lg:col-start-1 lg:col-end-3 lg:row-start-1 lg:row-end-8
             "
             >
               {gallary.length > 0 ? (
                 <>
-                  <div className="parent relative w-full h-[812px]">
+                  <div className="parent relative w-full h-full">
                     <Image
                       className="child object-cover rounded-sm"
                       src={gallary[0].items[0].img}
