@@ -31,14 +31,14 @@ const ListContent = ({ parentCategory, items }) => {
   return (
     <>
       <ul className="space-y-1">
-        {items.categoryData.map((value) => (
+        {items.categoryData?.map((value) => (
           <li
-            key={value.id}
+            key={value.label}
             className="text-md font-bold p-2 cursor-pointer"
             onClick={() => handleClick(value)}
           >
             {value.image === undefined ? (
-              <>{value.text}</>
+              <>{value.label}</>
             ) : (
               <>
                 {/* <Image src={src} alt="image" width={50} height={50} /> */}
@@ -48,7 +48,7 @@ const ListContent = ({ parentCategory, items }) => {
                     alt="pic"
                     className="w-10 h-10 rounded-full"
                   />
-                  <p className="pl-4">{value.text}</p>
+                  <p className="pl-4">{value.label}</p>
                 </div>
               </>
             )}

@@ -35,7 +35,6 @@ const Tabs = () => {
 
     setLoading(false);
   }, [dispatch, selectData, dataFetched]); // Include dataFetched in the dependency array
-  console.log({ data });
 
   const [activeTab, setActiveTab] = useState("");
   const [isSticky, setIsSticky] = useState(false);

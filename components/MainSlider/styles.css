@@ -117,3 +117,9 @@ img {
   color: var(--white-100);
   background: var(--black-300);
 }
+
+@media (max-width: 800px) {
+  .swiper-slider {
+    margin-top: 3.5rem;
+  }
+}
