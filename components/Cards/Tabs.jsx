@@ -23,7 +23,7 @@ const Tabs = () => {
     if (!dataFetched) {
       dispatch({
         type: "ALL_PRODUCTS_REQUEST",
-        payload: { limit: 10 }
+        payload: { limit: 10 },
       });
 
       setDataFetched(true);
@@ -31,19 +31,21 @@ const Tabs = () => {
 
     if (selectData) {
       setData(selectData);
-
     }
 
     setLoading(false);
   }, [dispatch, selectData, dataFetched]); // Include dataFetched in the dependency array
+<<<<<<< HEAD
+=======
+  console.log({ data });
+>>>>>>> 56fc513b83c9d9707cad2bcca545697d48aaafc9
 
   const [activeTab, setActiveTab] = useState("");
   const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
     if (data) {
-      const defaultActiveTab =
-        data[0]?.roomCategory[0]?.toLowerCase();
+      const defaultActiveTab = data[0]?.roomCategory[0]?.toLowerCase();
       setActiveTab(defaultActiveTab);
     }
   }, [data]);
@@ -67,10 +69,7 @@ const Tabs = () => {
     };
   }, []);
 
-  const recommendedProducts = data.flatMap(
-    (product) => product.roomCategory
-
-  );
+  const recommendedProducts = data.flatMap((product) => product.roomCategory);
 
   const tabsData = [];
   const tabImages = {};
@@ -79,8 +78,8 @@ const Tabs = () => {
   const uniqueRoomCategories = [...new Set(recommendedProducts)];
 
   uniqueRoomCategories?.forEach((category) => {
-    const products = data.filter(
-      (item) => item.roomCategory.includes(category)
+    const products = data.filter((item) =>
+      item.roomCategory.includes(category)
     );
 
     if (products.length > 0) {
@@ -90,7 +89,7 @@ const Tabs = () => {
         return {
           productTitle,
           productCategory: category,
-          productPrice: perUnitPrice
+          productPrice: perUnitPrice,
         };
       });
       tabsData.push({
@@ -123,18 +122,25 @@ const Tabs = () => {
           <h2 className="text-xl font-bold mb-5">More ideas and inspiration</h2>
         </div>
         <div
+<<<<<<< HEAD
           className={` py-2.5 bloc-tabsnone   flex flex-row tabcategory ${isSticky ? "sticky-tabcategory" : ""
             }`}
+=======
+          className={` py-2.5 bloc-tabsnone flex flex-row tabcategory ${
+            isSticky ? "sticky-tabcategory" : ""
+          }`}
+>>>>>>> 56fc513b83c9d9707cad2bcca545697d48aaafc9
           style={{ overflowX: "auto", WebkitOverflowScrolling: "touch" }}
         >
           {tabsData.map((tab, i) => (
             <div
               key={i}
               className={` px-5 py-2 tabS cursor-pointer
-            ${activeTab === tab.key
-                  ? "active-tabs  border border-black mr-2.5 rounded-full flex items-center justify-center bg-gray-100 whitespace-nowrap"
-                  : "tabs  border border-white mr-2.5 rounded-full flex items-center justify-center bg-gray-100 whitespace-nowrap"
-                }`}
+            ${
+              activeTab === tab.key
+                ? "active-tabs  border border-black mr-2.5 rounded-full flex items-center justify-center bg-gray-100 whitespace-nowrap"
+                : "tabs  border border-white mr-2.5 rounded-full flex items-center justify-center bg-gray-100 whitespace-nowrap"
+            }`}
               onClick={() => setActiveTab(tab.key)}
             >
               {tab.label}
@@ -146,8 +152,11 @@ const Tabs = () => {
           <TabImage
             width={450}
             height={700}
-            src={tabImages[activeTab] ? tabImages[activeTab][0] : tabImages[activeTab]?.alt}
-
+            src={
+              tabImages[activeTab]
+                ? tabImages[activeTab][0]
+                : tabImages[activeTab]?.alt
+            }
             alt="Room"
             handleTab={handleTab}
             labelData={labelData[activeTab]?.[0] || []}
@@ -156,8 +165,11 @@ const Tabs = () => {
           <div className="overflow-hidden relative">
             <Image
               className="h-full w-full object-cover "
-              src={tabImages[activeTab] ? tabImages[activeTab][3] : tabImages[activeTab]?.alt}
-
+              src={
+                tabImages[activeTab]
+                  ? tabImages[activeTab][3]
+                  : tabImages[activeTab]?.alt
+              }
               alt="Room"
               width={450}
               height={350}
@@ -165,8 +177,11 @@ const Tabs = () => {
           </div>
 
           <TabImage
-            src={tabImages[activeTab] ? tabImages[activeTab][1] : tabImages[activeTab]?.alt}
-
+            src={
+              tabImages[activeTab]
+                ? tabImages[activeTab][1]
+                : tabImages[activeTab]?.alt
+            }
             labelData={labelData[activeTab]?.[1] || []}
             alt="Room"
             width={450}
@@ -182,8 +197,11 @@ const Tabs = () => {
           </div>
 
           <TabImage
-            src={tabImages[activeTab] ? tabImages[activeTab][2] : tabImages[activeTab]?.alt}
-
+            src={
+              tabImages[activeTab]
+                ? tabImages[activeTab][2]
+                : tabImages[activeTab]?.alt
+            }
             labelData={labelData[activeTab]?.[2] || []}
             alt="Room"
             handleTab={handleTab}
@@ -193,8 +211,11 @@ const Tabs = () => {
           <div className="overflow-hidden">
             <Image
               className="h-full w-full object-cover"
-              src={tabImages[activeTab] ? tabImages[activeTab][4] : tabImages[activeTab]?.alt}
-
+              src={
+                tabImages[activeTab]
+                  ? tabImages[activeTab][4]
+                  : tabImages[activeTab]?.alt
+              }
               alt="Room"
               width={450}
               height={350}
@@ -203,8 +224,11 @@ const Tabs = () => {
           <div className="bg-teal-100 overflow-hidden ">
             <Image
               className="h-full w-full object-cover"
-              src={tabImages[activeTab] ? tabImages[activeTab][5] : tabImages[activeTab]?.alt}
-
+              src={
+                tabImages[activeTab]
+                  ? tabImages[activeTab][5]
+                  : tabImages[activeTab]?.alt
+              }
               alt="Room"
               width={450}
               height={350}

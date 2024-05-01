@@ -10,7 +10,11 @@ export default function RoomImageList() {
   console.log(data);
   return (
     <>
+<<<<<<< HEAD
       <div className="imggallery mt-[50px]  w-[65vw]">
+=======
+      <div className="imggallery mt-[50px]">
+>>>>>>> 56fc513b83c9d9707cad2bcca545697d48aaafc9
         <div className="sm:grid hidden sm:grid-cols-2 sm:grid-rows-2 gap-3">
           {data[0]?.images?.map((image, index) => (
             <div
