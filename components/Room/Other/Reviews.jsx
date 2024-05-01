@@ -83,8 +83,13 @@ const Reviews = ({ productId, data }) => {
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isReview, setIsReview] = useState(false);
 
   console.log(data._id);
+
+  const handleReview = () => {
+    setIsReview(!isReview);
+  };
 
   const checkUser = async () => {
     try {
@@ -307,7 +312,27 @@ const Reviews = ({ productId, data }) => {
           </>
         ) : (
           <>
-            <ReviewForm addReview={addReview} />
+            {!isReview ? (
+              <>
+                <button onClick={() => handleReview()}>
+                  <h2 className="text-xl font-bold mb-4">Add Review</h2>
+                </button>
+              </>
+            ) : (
+              <>
+                <div>
+                  <div className="w-full">
+                    <button
+                      className="text-lg flex justify-end font-bold mb-4"
+                      onClick={() => handleReview()}
+                    >
+                      Close
+                    </button>
+                  </div>
+                  <ReviewForm addReview={addReview} />
+                </div>
+              </>
+            )}
           </>
         )}
         <Carous data={data} />

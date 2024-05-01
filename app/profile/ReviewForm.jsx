@@ -24,7 +24,6 @@ const ReviewForm = ({ addReview }) => {
 
   return (
     <div className="my-8">
-      <h2 className="text-xl font-bold mb-4">Add Review</h2>
       <form onSubmit={handleSubmit}>
         <input type="hidden" id="name" />
         <input type="hidden" id="image" />
