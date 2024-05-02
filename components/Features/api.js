@@ -70,6 +70,18 @@ export const fetchFirstImgCardSlider = async () => {
     throw error;
   }
 };
+
+export const fetchBlogCardDataApi = async () => {
+  try {
+    const response = await axios.get(createApiEndpoint("fetchAllSuggestions"));
+    return response.data;
+  } catch (error) {
+    console.error(`Error fetching blogs: ${error.message}`);
+    throw error;
+  }
+};
+
+
 export const fetchProfileContent = async () => {
   try {
     const response = await axios.get(createApiEndpoint("profileContent"));

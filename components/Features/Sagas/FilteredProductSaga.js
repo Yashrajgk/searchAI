@@ -5,15 +5,11 @@ function* fetchFilteredProduct(action) {
   try {
     const apiUrl = `${
       process.env.NEXT_PUBLIC_API_BASE_URL
-    }/api/products?category=${encodeURIComponent(action.payload.heading)}&${
-      action.payload.parentCategoryVar
-    }=${encodeURIComponent(action.payload.cat)}`;
-
+    }/api/productByCategoryAndSubCategory?category=${action.payload.parentCategoryVar}&subcategory=${action.payload.cat}`;
     // const apiUrl="http://localhost:4000/api/Products"
 
     const response = yield call(axios.get, apiUrl);
     // const data = yield response.json();
-    // console.log("res is ",(response.data))
     yield put(setFilteredProduct(response.data));
     // yield put(setFilteredProduct((response.data).slice(-8)));
   } catch (error) {

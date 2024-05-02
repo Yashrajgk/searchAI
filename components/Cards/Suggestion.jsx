@@ -11,8 +11,12 @@ import "swiper/css/scrollbar";
 import { Pagination, Scrollbar, Mousewheel, FreeMode } from "swiper/modules";
 
 import SuggestionCard from "./SuggestionCard";
+import { useSelector, useDispatch } from "react-redux";
+import { selectBlogCardData } from "../Features/Slices/blogCardSlice";
 
 const Suggestion = () => {
+  const blogCardData = useSelector(selectBlogCardData);
+  const dispatch = useDispatch();
 
   const backgroundColors = [
     "bg-slate-500",
@@ -25,21 +29,15 @@ const Suggestion = () => {
   const [suggestionSlider, setSuggestionSlider] = useState([]);
 
   const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/fetchAllSuggestions`;
-  console.log(url)
 
-  useEffect(()=>{
-    const fetchAllSuggestions = async () => {
-      try {
-        const response = await fetch(url);
-        const data = await response.json();
-        console.log(data);
-        setSuggestionSlider(data);
-      } catch (error) {
-        console.log("Error", error);
-      }
-    };
-    fetchAllSuggestions();
-  },[])
+  useEffect(() => {
+    if (blogCardData.length === 0) {
+      dispatch({ type: "FETCH_BLOG_CARD_DATA", payload: "blogCard" });
+    }
+    if (blogCardData) {
+      setSuggestionSlider(blogCardData);
+    }
+  }, [blogCardData]);
 
   const swiperUseref = useRef(null);
 

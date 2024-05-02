@@ -16,6 +16,7 @@ import selectedProductReducer from "./Slices/compareSlice";
 import virtualReducer from "./Slices/virtualSlice";
 import virtualDataReducer from "./Slices/virtualDataSlice";
 import trendingReducer from "./Slices/trendingSlice";
+import blogCardReducer from "./Slices/blogCardSlice";
 import multiCardReducer from "./Slices/multiCardSlice";
 import imageChangerReducer from "./Slices/ImagechangerSlice";
 import displayReducer from "./Slices/displaySlice";
@@ -63,6 +64,7 @@ export const store = configureStore({
     cart: cartReducer,
     selectedproduct: selectedProductReducer,
     trending: trendingReducer,
+    blogCard: blogCardReducer,
     multiCard: multiCardReducer,
     Imagechanger: imageChangerReducer,
     Display: displayReducer,

@@ -9,15 +9,15 @@ const Displaybox = (props) => {
   const [currentCategory, setCurrentCategory] = useState("");
 
   const handleClick = (value) => {
-    const category = value.replace(/\s+/g, "-").toLowerCase();
+    // const category = value.replace(/\s+/g, "-").toLowerCase();
+    const category = encodeURIComponent(value.toLowerCase());
     const newPath = `/${props.parentCategory}/${currentCategory}/${category}`;
     router.push(newPath);
   };
 
   useEffect(() => {
-    console.log(props.data.categoryHeading)
     if (props.data.categoryHeading) {
-      const category = props.data.categoryHeading.replace(/\s+/g, "-").toLowerCase();
+      const category = encodeURIComponent(props.data.categoryHeading.toLowerCase());
       setCurrentCategory(category);
     }
   }, [props.data.categoryHeading]);

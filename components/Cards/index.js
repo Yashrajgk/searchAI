@@ -55,19 +55,11 @@ function Cards() {
     }
   }, [dispatch, selectData, dataFetched]); // Include dataFetched in the dependency array
 
-
   const Partdata = (cat) => {
-    return (
-      recommended.filter(
-        (item) => item.category === `${cat}`
-      ) || []
-    );
+    return recommended.filter((item) => item.category === `${cat}`) || [];
   };
 
-  const categories =
-    recommended?.map(
-      (item) => item.category
-    ) || [];
+  const categories = recommended?.map((item) => item.category) || [];
   let uniqueCategories = [...new Set(categories)];
   // console.log("uniqueCategories", uniqueCategories);
   const MemoizedMainSlider = useMemo(() => <NewMainSlider />, []);
@@ -97,36 +89,39 @@ function Cards() {
       <Trending />
 
       <RoomCard />
-      {uniqueCategories?.map((item, index) => (
-        <Dataslider
-          key={item}
-          category={item}
-          sliderIndex={index}
-          data={Partdata(item)}
-          ref={datasliderRefs.current[index]}
-        />
-      ))}
-      {/* {uniqueCategories && uniqueCategories.includes("Flooring") ? (
-        <>
-          <Dataslider
-            category={"Flooring"}
-            sliderIndex={0}
-            data={Partdata("Flooring")}
-          />
-        </>
+
+      {uniqueCategories && uniqueCategories.length > 2 ? (
+        uniqueCategories?.map((item, index) => (
+          <div>
+            <Dataslider
+              key={item}
+              category={item}
+              sliderIndex={index}
+              data={Partdata(item)}
+              ref={datasliderRefs.current[index]}
+              
+            />
+            {index === 1 && <Display />}
+          </div>
+        ))
       ) : (
-        <>
-          <Dataslider
-            category={"Wallpaper"}
-            sliderIndex={0}
-            data={Partdata("Wallpaper")}
-          />
-        </>
-      )} */}
-      <Display />
+        <div>
+          {uniqueCategories?.map((item, index) => (
+            <Dataslider
+              key={item}
+              category={item}
+              sliderIndex={index}
+              data={Partdata(item)}
+              ref={datasliderRefs.current[index]}
+            />
+          ))}
+          <Display />
+        </div>
+      )}
+
       <Multicard />
 
-      <Suggestion/>
+      <Suggestion />
       {/* <Image /> */}
       {/* {uniqueCategories &&
         (uniqueCategories.includes("Flooring") ? (

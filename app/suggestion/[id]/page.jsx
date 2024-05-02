@@ -31,9 +31,7 @@ const SuggestionPage = ({ params }) => {
   useEffect(() => {
     const fetchSuggestionData = async () => {
       try {
-        console.log(id);
         const response = await axios.get(url, { params: { id } });
-        console.log("response  ", response.data);
         setSuggestion(response.data);
       } catch (error) {
         console.log("Error", error);

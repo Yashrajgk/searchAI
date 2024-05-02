@@ -39,6 +39,7 @@ const Trending = () => {
       setNewTrendingData(trendingData);
     }
   }, [trendingData]);
+  
   const swiperUseref = useRef(null);
   const swiperOptions2 = {
     slidesPerView: 4.08,
