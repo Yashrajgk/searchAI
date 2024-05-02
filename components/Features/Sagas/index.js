@@ -20,6 +20,7 @@ import { watchFilterProducts } from "./FilteredProductSaga";
 import { watchFetchAllProducts } from "./productSaga";
 import { watchFetchImageData } from "./imageDataSaga";
 import { watchFetchBlogCardData } from "./blogCardSage";
+import { watchFetchSuggestionData } from "./suggestionDataSaga";
 
 export default function* rootSaga() {
   yield all([
@@ -43,5 +44,6 @@ export default function* rootSaga() {
     watchFetchAllProducts(),
     watchFetchImageData(),
     watchFetchBlogCardData(),
+    watchFetchSuggestionData(),
   ]);
 }

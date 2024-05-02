@@ -20,25 +20,23 @@ import QuiltSelector from "@/components/Cards/QuiltSelector";
 import { selectRecommendedProduct } from "@/components/Features/Slices/recommendationSlice";
 import Tabs from "@/components/Cards/Tabs";
 import { useParams } from "next/navigation";
+import {
+  selectSuggestionData,
+  selectSuggestionStatus,
+} from "@/components/Features/Slices/suggestionDataSlice";
 
 
 const SuggestionPage = ({ params }) => {
   const id = params.id;
 
-  const [suggestion, setSuggestion] = useState({});
+  const suggestion = useSelector(selectSuggestionData);
+  const suggestionStatus = useSelector(selectSuggestionStatus);
 
-  let url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/fetchSuggestionById`;
   useEffect(() => {
-    const fetchSuggestionData = async () => {
-      try {
-        const response = await axios.get(url, { params: { id } });
-        setSuggestion(response.data);
-      } catch (error) {
-        console.log("Error", error);
-      }
-    };
-    fetchSuggestionData();
-  }, [id]);
+    if (suggestionStatus === "idle" || suggestionStatus === "failed") {
+      dispatch({ type: "FETCH_SUGGESTION_DATA", payload: id });
+    }
+  }, []);
 
   const [recommended, setRecommended] = useState([]);
   const [dataFetched, setDataFetched] = useState(false);

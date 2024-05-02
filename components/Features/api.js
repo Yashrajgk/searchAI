@@ -140,3 +140,15 @@ export const fetchFirstImageChangerData = async () => {
     throw error;
   }
 };
+
+export const fetchSuggestionData = async (id) => {
+  try {
+    const response = await axios.get(createApiEndpoint("fetchSuggestionById"), {
+      params: { id },
+    });
+    return response.data;
+  } catch (error) {
+    console.error(`Error fetching suggestions: ${error.message}`);
+    throw error;
+  }
+};
