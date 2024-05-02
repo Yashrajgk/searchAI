@@ -4,7 +4,6 @@ import Displaybox from "./Displaybox";
 import { homeDecorCategoryData } from "@/Model/Dropdown/CategoryData/HomeDecorCategoryData";
 import { flooringCategoryData } from "@/Model/Dropdown/CategoryData/FlooringCategoryData";
 import { wallDecorCategoryData } from "@/Model/Dropdown/CategoryData/WallDecorCategoryData";
-import { motion } from "framer-motion";
 import Midsection from "../Midsection/Midsection";
 // import { AsideSectionList } from "@/Model/Dropdown/AsideData/AsideData";
 
@@ -42,7 +41,7 @@ const Asidebox = (props) => {
   return (
     <>
       {asideCategory && (
-        <motion.div
+        <div
           initial={
             typeof window !== "undefined" &&
             window.innerWidth > 800 && { y: -10, opacity: 0 }
@@ -50,7 +49,7 @@ const Asidebox = (props) => {
           whileInView={{ y: 0, opacity: 1 }}
           className="absolute top-[3rem] bg-white flex flex-col md:flex-row noto-sans-200 transition-all duration-300 ease-linear w-full md:left-0 h-lvh md:h-auto md:px-10"
         >
-          <motion.aside
+          <aside
             className="absolute top-5 md:top-0 md:static md:border-r md:pr-10 md:py-4"
             initial={
               typeof window !== "undefined" &&
@@ -72,14 +71,8 @@ const Asidebox = (props) => {
                 {value.categoryHeading}
               </Link>
             ))}
-          </motion.aside>
-          <motion.div
-            initial={
-              typeof window !== "undefined" &&
-              window.innerWidth <= 800 && { x: 300, opacity: 0 }
-            }
-            whileInView={{ x: 0, opacity: 1 }}
-            transition={{ type: "just" }}
+          </aside>
+          <div
             className={`${
               innerData ? "block" : "hidden"
             } md:block absolute w-full h-[100vh] bg-white md:h-auto md:w-auto md:static z-[99]`}
@@ -89,8 +82,8 @@ const Asidebox = (props) => {
               defaultLinkIndex={defaultLinkIndex}
               data={selectedData}
             />
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       )}
     </>
   );

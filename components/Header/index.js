@@ -22,7 +22,6 @@ import {
 import Midsection from "./Midsection/Midsection";
 import { useSelector } from "react-redux";
 import { MenuIcon, X } from "lucide-react";
-import { motion } from "framer-motion";
 // import NextTopLoader from "nextjs-toploader";
 
 function Header({ howMuchScrolled }) {
@@ -346,7 +345,7 @@ function Header({ howMuchScrolled }) {
       </div>
       {isMobileMenuOpen && (
         <>
-          <motion.div
+          <div
             initial={
               typeof window !== "undefined" &&
               window.innerWidth <= 800 && { x: 300, opacity: 0 }
@@ -410,7 +409,7 @@ function Header({ howMuchScrolled }) {
               ))}
             </div>
             {/* </div> */}
-          </motion.div>
+          </div>
         </>
       )}
     </div>
