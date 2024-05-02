@@ -15,10 +15,14 @@ import { usePathname } from "next/navigation";
 import TopHeader from "./TopHeader";
 import dynamic from "next/dynamic";
 import { selectQuantity } from "../Features/Slices/calculationSlice";
-import { AsideSectionList, headerLinks } from "@/Model/Dropdown/AsideData/AsideData";
+import {
+  AsideSectionList,
+  headerLinks,
+} from "@/Model/Dropdown/AsideData/AsideData";
 import Midsection from "./Midsection/Midsection";
 import { useSelector } from "react-redux";
 import { MenuIcon, X } from "lucide-react";
+import { motion } from "framer-motion";
 // import NextTopLoader from "nextjs-toploader";
 
 function Header({ howMuchScrolled }) {
@@ -139,14 +143,17 @@ function Header({ howMuchScrolled }) {
 
   return (
     <div className="">
-      {homeRoute === pathname  && typeof window !== "undefined" ? (
+      {(homeRoute === pathname ||
+        pathname.includes("/product/") ||
+        pathname.includes("/products/")) &&
+      typeof window !== "undefined" ? (
         typeof window !== "undefined" && window.scrollY < 20 ? (
           <TopHeader />
         ) : null
       ) : null}
       <div
         className={`fixed w-full sm:bg-none ${
-          homeRoute === pathname 
+          homeRoute === pathname || pathname.includes("/product/")
             ? typeof window !== "undefined" && window.scrollY < 20
               ? "md:top-[30px] top-[0px]"
               : "top-0"
@@ -164,11 +171,11 @@ function Header({ howMuchScrolled }) {
             <div
               className={`${
                 isScrolled ? " border-b-[0.5px] border-slate-200" : ""
-              } flex flex-row justify-between items-center py-[5px] sm:px-[30px] px-[10px]`}
+              } flex flex-row justify-between items-center sm:px-[10px] px-[10px] h-16`}
             >
               {/* main-logo */}
               <div className=" flex items-center justify-start ">
-                <div className="mainlogo md:pr-[60px]">
+                <div className="mainlogo 2lg:pr-[60px]">
                   <Link href="/">
                     <Image
                       src="/images/ayatriologo.webp"
@@ -176,7 +183,7 @@ function Header({ howMuchScrolled }) {
                       width={300}
                       height={40}
                       priority
-                      className="p-2 sm:w-44 object-cover"
+                      className="w-36 lg:w-44 object-cover"
                     />
                   </Link>
                 </div>
@@ -189,7 +196,7 @@ function Header({ howMuchScrolled }) {
                 {/* for only mobile search */}
 
                 <div className="">
-                  <nav className="hidden md:flex space-x-1 ">
+                  <nav className="hidden md:flex gap-4">
                     {headerLinks.map((value, idx) => (
                       <div
                         key={idx}
@@ -205,7 +212,7 @@ function Header({ howMuchScrolled }) {
                           onClick={toggleDropdown}
                         >
                           <p
-                            className={`block p-2 py-4 text-lg font-medium border-b-2 ${
+                            className={`block font-medium border-b-2 ${
                               hoveredIndex === idx
                                 ? "border-black"
                                 : "border-transparent"
@@ -214,11 +221,12 @@ function Header({ howMuchScrolled }) {
                             {value.label}
                           </p>
                         </Link>
-                        { hoveredIndex === idx && (
+                        {hoveredIndex === idx && (
                           // <Asidebox asideSectionList={value.asideSectionList} />
                           <Asidebox hoveredIndex={hoveredIndex} />
                         )}
-                        {value.label === "Shop by rooms" && hoveredIndex === idx && <Midsection />}
+                        {value.label === "Shop by rooms" &&
+                          hoveredIndex === idx && <Midsection />}
                       </div>
                     ))}
                   </nav>
@@ -229,7 +237,7 @@ function Header({ howMuchScrolled }) {
               <div className="flex flex-row items-center justify-end  gap-2">
                 <div
                   onClick={handleModalOpen}
-                  className="bg-[#f5f5f5] justify-end rounded-full w-[9rem] h-10 p-[9px] hover:bg-[#e5e5e5] hover:rounded-full cursor-pointer md:block hidden"
+                  className="bg-[#f5f5f5] justify-end rounded-full w-[9rem] h-10 p-[9px] hover:bg-[#e5e5e5] hover:rounded-full cursor-pointer lg:block hidden"
                 >
                   <span>
                     <Image
@@ -338,8 +346,16 @@ function Header({ howMuchScrolled }) {
       </div>
       {isMobileMenuOpen && (
         <>
-          <div className="fixed inset-0 flex flex-col px-[10px] overflow-y-hidden bg-zinc-50 z-[100000] md:hidden">
-            <div className="flex justify-between items-center py-[5px]  w-full h-fit mb-4">
+          <motion.div
+            initial={
+              typeof window !== "undefined" &&
+              window.innerWidth <= 800 && { x: 300, opacity: 0 }
+            }
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ type: "just" }}
+            className="fixed inset-0 flex flex-col px-[10px] overflow-y-hidden bg-white z-[100000] md:hidden"
+          >
+            <div className="flex justify-between items-center py-[5px] w-full h-fit mb-4">
               <div className=" flex items-center justify-start ">
                 <div className="mainlogo">
                   <Link href="/">
@@ -361,40 +377,40 @@ function Header({ howMuchScrolled }) {
             </div>
 
             {/* <div className="flex"> */}
-              <div className="flex flex-col space-y-2 ">
-                {headerLinks.map((value, idx) => (
-                  <div
-                    key={idx}
-                    onMouseEnter={() => handleMouseEnter(idx)}
-                    onMouseLeave={handleMouseLeave}
-                    onClick={() => handleClick(idx)}
+            <div className="flex flex-col space-y-2 ">
+              {headerLinks.map((value, idx) => (
+                <div
+                  key={idx}
+                  onMouseEnter={() => handleMouseEnter(idx)}
+                  onMouseLeave={handleMouseLeave}
+                  onClick={() => handleClick(idx)}
+                >
+                  <Link
+                    className={`text-md  font-semibold  ${
+                      isOpen ? "border-b-2 border-black" : ""
+                    }`}
+                    href="#"
+                    onClick={toggleDropdown}
                   >
-                    <Link
-                      className={`text-md  font-semibold  ${
-                        isOpen ? "border-b-2 border-black" : ""
+                    <p
+                      className={`block p-2 text-lg font-medium border-b-2 ${
+                        hoveredIndex === idx
+                          ? "border-black"
+                          : "border-transparent"
                       }`}
-                      href="#"
-                      onClick={toggleDropdown}
                     >
-                      <p
-                        className={`block p-2 text-lg font-medium border-b-2 ${
-                          hoveredIndex === idx
-                            ? "border-black"
-                            : "border-transparent"
-                        }`}
-                      >
-                        {value.label}
-                      </p>
-                    </Link>
-                    {idx < 2 && hoveredIndex === idx && (
-                      <Asidebox hoveredIndex={hoveredIndex} />
-                    )}
-                    {idx === 2 && hoveredIndex === idx && <Midsection />}
-                  </div>
-                ))}
-              </div>
+                      {value.label}
+                    </p>
+                  </Link>
+                  {idx < 3 && hoveredIndex === idx && (
+                    <Asidebox hoveredIndex={hoveredIndex} />
+                  )}
+                  {idx === 3 && hoveredIndex === idx && <Midsection />}
+                </div>
+              ))}
+            </div>
             {/* </div> */}
-          </div>
+          </motion.div>
         </>
       )}
     </div>

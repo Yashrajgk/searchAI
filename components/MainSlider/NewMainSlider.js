@@ -65,9 +65,6 @@ export default function NewMainSlider() {
         keyboard={{
           enabled: true,
         }}
-        style={{
-          marginLeft: -60,
-        }}
         // Enabled autoplay mode
         autoplay={{
           delay: 10000,
@@ -105,228 +102,71 @@ export default function NewMainSlider() {
           />
         </div>
 
-        <SwiperSlide key={sliderApiData[0]?._id}>
-          <div className="relative group h-[78vh] bg-gray-100">
-            <Image
-              src={sliderApiData[0]?.imgSrc}
-              fill
-              alt="Swiper"
-              priority
-              className=" swiper-slide "
-              objectFit="cover"
-            />
-            <div className="absolute flex text-lg text-white bottom-4 md:left-4 left-16">
-              {sliderApiData[0]?.imgTitle}
-            </div>
-            <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full transition-opacity opacity-0 group-hover:opacity-100">
-              <div onMouseEnter={handleEnter} className="cursor-pointer">
-                <div className="carcular-conui top-28 left-40 absolute rounded-full w-[30px] h-[30px]">
-                  <div className="absolute w-3 h-3 bg-white rounded-full carcular-ui"></div>
+        {sliderApiData.map((data) => {
+          return (
+            <SwiperSlide key={data?._id}>
+              <div className="relative group h-[78vh] bg-gray-100">
+                <Image
+                  src={data?.imgSrc}
+                  fill
+                  alt="Swiper"
+                  priority
+                  className=" swiper-slide "
+                  objectFit="cover"
+                />
+                <div className="absolute flex text-lg text-white bottom-[2.5rem] left-[3rem] flex-col md:flex-row gap-4 md:items-center">
+                  <div className="w-full md:w-auto">
+                    <button className="text-base px-5 py-2 bg-white text-black rounded-3xl border-none">
+                      {data?.imgTitle}
+                    </button>
+                  </div>
+                  <p className="text-xl font-[500] drop-shadow-xl">
+                    Buy all living room products.
+                  </p>
                 </div>
-              </div>
-              {hov && (
-                <div
-                  className={`flex-row z-10 p-2 sm:-ml-[350px] sm:-mt-[100px] flex items-center pb-3 bg-white cursor-pointer`}
-                  onClick={handleTab}
-                  onMouseLeave={handleLeave}
-                >
-                  <div className="relative flex flex-row">
+                <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full transition-opacity opacity-0 group-hover:opacity-100">
+                  <div onMouseEnter={handleEnter} className="cursor-pointer">
+                    <div class="border-2 border-neutral-300 hover:border-white top-28 left-40 absolute hover:bg-[rgba(0,0,0,0.3)] rounded-full size-[30px] flex items-center justify-center transition-all duration-200 before:content-[''] before:size-3 before:bg-white  before:rounded-full before:hover:size-2 before:transition-all before:duration-200" />
+                  </div>
+                  {hov && (
                     <div
-                      className="flex flex-col basis-3/4 w-36 flex-grow relative ml-1 mr-2.5 pr-4"
-                      key={sliderApiData[0]?._id}
+                      className={`flex-row z-10 p-2 sm:-ml-[350px] sm:-mt-[100px] flex items-center pb-3 bg-white cursor-pointer absolute top-36 sm:top-60 left-44 sm:left-[34rem] shadow-lg drop-shadow-2xl`}
+                      onClick={handleTab}
+                      onMouseLeave={handleLeave}
                     >
-                      <h2 className="pt-1 pr-2 font-bold">
-                        {sliderApiData[0]?.circles[0].productTitle}
-                      </h2>
-                      <p className="pb-2 font-normal">
-                        {sliderApiData[0]?.circles[0].productCategory}
-                      </p>
-                      <p className="w-16 h-8 pl-2 font-bold bg-yellow-400 main">
-                        ₹{sliderApiData[0]?.circles[0].productPrice}
-                      </p>
-                    </div>
-                    <div className="absolute top-0 right-0 flex items-center justify-end h-full pr-1 border-l border-gray-200">
-                      <Image
-                        className="flex ml-2"
-                        src="/icon/arrow_right.svg"
-                        height={20}
-                        width={20}
-                        alt="arrow"
-                      />
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide key={sliderApiData[1]?._id}>
-          <div className="relative group h-[78vh] bg-gray-500">
-            <Image
-              src={sliderApiData[1]?.imgSrc}
-              width={500}
-              height={330}
-              alt="Swiper"
-              objectFit="cover"
-              className="object-cover swiper-slide"
-            />
-            <div className="absolute flex text-lg text-white bottom-4 md:left-4 left-16">
-              {sliderApiData[1]?.imgTitle}
-            </div>
-            <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full transition-opacity opacity-0 group-hover:opacity-100">
-              <div onMouseEnter={handleEnter} className="cursor-pointer">
-                <div className="carcular-conui top-28 left-40 absolute rounded-full w-[30px] h-[30px]">
-                  <div className="absolute w-3 h-3 bg-white rounded-full carcular-ui"></div>
-                </div>
-              </div>
-              {hov && (
-                <div
-                  className={`flex-row z-10 p-2 sm:-ml-[350px] sm:-mt-[100px] flex items-center pb-3 bg-white cursor-pointer`}
-                  onClick={handleTab}
-                  onMouseLeave={handleLeave}
-                >
-                  <div className="relative flex flex-row">
-                    <div
-                      className="flex flex-col basis-3/4 w-36 flex-grow relative ml-1 mr-2.5 pr-4"
-                      key={sliderApiData[1]?._id}
-                    >
-                      <h2 className="pt-1 pr-2 font-bold">
-                        {sliderApiData[1]?.circles[0].productTitle}
-                      </h2>
-                      <p className="pb-2 font-normal">
-                        {sliderApiData[1]?.circles[0].productTitle}
-                      </p>
-                      <p className="w-16 h-8 pl-2 font-bold bg-yellow-400 main">
-                        {sliderApiData[1]?.circles[0].productTitle}
-                      </p>
-                    </div>
-                    <div className="absolute top-0 right-0 flex items-center justify-end h-full pr-1 border-l border-gray-200">
-                      <Image
-                        className="flex ml-2"
-                        src="/icon/arrow_right.svg"
-                        height={20}
-                        width={20}
-                        alt="arrow"
-                      />
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide key={sliderApiData[2]?._id}>
-          <div className="relative group h-[78vh] bg-gray-100">
-            <Image
-              src={sliderApiData[2]?.imgSrc}
-              width={500}
-              height={330}
-              alt="Swiper"
-              objectFit="cover"
-              className="object-cover swiper-slide"
-            />
-            <div className="absolute flex text-lg text-white bottom-4 md:left-4 left-16">
-              {sliderApiData[2]?.imgTitle}
-            </div>
-            <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full transition-opacity opacity-0 group-hover:opacity-100">
-              <div onMouseEnter={handleEnter} className="cursor-pointer">
-                <div className="carcular-conui top-28 left-40 absolute rounded-full w-[30px] h-[30px]">
-                  <div className="absolute w-3 h-3 bg-white rounded-full carcular-ui"></div>
-                </div>
-              </div>
-              {hov && (
-                <div
-                  className={`flex-row z-10 p-2 sm:-ml-[350px] sm:-mt-[100px] flex items-center pb-3 bg-white cursor-pointer`}
-                  onClick={handleTab}
-                  onMouseLeave={handleLeave}
-                >
-                  <div className="relative flex flex-row">
-                    <div
-                      className="flex flex-col basis-3/4 w-36 flex-grow relative ml-1 mr-2.5 pr-4"
-                      key={sliderApiData[2]?._id}
-                    >
-                      <h2 className="pt-1 pr-2 font-bold">
-                        {sliderApiData[2]?.circles[0].productTitle}
-                      </h2>
-                      <p className="pb-2 font-normal">
-                        {sliderApiData[2]?.circles[0].productTitle}
-                      </p>
-                      <p className="w-16 h-8 pl-2 font-bold bg-yellow-400 main">
-                        {sliderApiData[2]?.circles[0].productTitle}
-                      </p>
-                    </div>
-                    <div className="absolute top-0 right-0 flex items-center justify-end h-full pr-1 border-l border-gray-200">
-                      <Image
-                        className="flex ml-2"
-                        src="/icon/arrow_right.svg"
-                        height={20}
-                        width={20}
-                        alt="arrow"
-                      />
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-        </SwiperSlide>
-        {sliderApiData?.slice(3).map((data) => (
-          <SwiperSlide key={data._id}>
-            <div className="relative group h-[78vh] bg-gray-100">
-              <Image
-                src={data.imgSrc}
-                width={500}
-                height={330}
-                alt="Swiper"
-                objectFit="cover"
-                className="object-cover swiper-slide"
-              />
-              <div className="absolute flex text-lg text-white bottom-4 md:left-4 left-16">
-                {data?.imgTitle}
-              </div>
-              <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full transition-opacity opacity-0 group-hover:opacity-100">
-                <div onMouseEnter={handleEnter} className="cursor-pointer">
-                  <div className="carcular-conui top-28 left-40 absolute rounded-full w-[30px] h-[30px]">
-                    <div className="absolute w-3 h-3 bg-white rounded-full carcular-ui"></div>
-                  </div>
-                </div>
-                {hov && (
-                  <div
-                    className={`flex-row z-10 p-2 sm:-ml-[350px] sm:-mt-[100px] flex items-center pb-3 bg-white cursor-pointer`}
-                    onClick={handleTab}
-                    onMouseLeave={handleLeave}
-                  >
-                    <div className="relative flex flex-row">
-                      <div
-                        className="flex flex-col basis-3/4 w-36 flex-grow relative ml-1 mr-2.5 pr-4"
-                        key={data._id}
-                      >
-                        <h2 className="pt-1 pr-2 font-bold">
-                          {data.circles[0].productTitle}
-                        </h2>
-                        <p className="pb-2 font-normal">
-                          {data.circles[0].productCategory}
-                        </p>
-                        <p className="w-16 h-8 pl-2 font-bold bg-yellow-400 main">
-                          ₹{data.circles[0].productPrice}
-                        </p>
-                      </div>
-                      <div className="absolute top-0 right-0 flex items-center justify-end h-full pr-1 border-l border-gray-200">
-                        <Image
-                          className="flex ml-2"
-                          src="/icon/arrow_right.svg"
-                          height={20}
-                          width={20}
-                          alt="arrow"
-                        />
+                      <div className="flex flex-row">
+                        <div
+                          className="flex flex-col basis-3/4 w-28 flex-grow ml-1 mr-2.5 text-[14px]"
+                          key={data?._id}
+                        >
+                          <h2 className="font-[600]">
+                            {data?.circles[0].productTitle}
+                          </h2>
+                          <p>
+                            {data?.circles[0].productCategory}
+                          </p>
+                          <p className="flex items-center gap-1 text-2xl mt-1">
+                            <sub className="text-[12px] font-bold">₹</sub>
+                            {data?.circles[0].productPrice}
+                          </p>
+                        </div>
+                        <div className="absolute top-0 right-0 flex items-center justify-end h-full border-l border-gray-200">
+                          <Image
+                            className="flex mx-1"
+                            src="/icon/arrow_right.svg"
+                            height={20}
+                            width={20}
+                            alt="arrow"
+                          />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
-            </div>
-          </SwiperSlide>
-        ))}
+            </SwiperSlide>
+          );
+        })}
         <div className={`${navigationVisible ? "block" : "hidden"}`}>
           <Image
             src="/icon/arrow_right.svg"

@@ -4,6 +4,7 @@ import Displaybox from "./Displaybox";
 import { homeDecorCategoryData } from "@/Model/Dropdown/CategoryData/HomeDecorCategoryData";
 import { flooringCategoryData } from "@/Model/Dropdown/CategoryData/FlooringCategoryData";
 import { wallDecorCategoryData } from "@/Model/Dropdown/CategoryData/WallDecorCategoryData";
+import { motion } from "framer-motion";
 import Midsection from "../Midsection/Midsection";
 // import { AsideSectionList } from "@/Model/Dropdown/AsideData/AsideData";
 
@@ -27,40 +28,70 @@ const Asidebox = (props) => {
       asideCategory = null;
   }
   const [defaultLinkIndex, setDefaultLinkIndex] = useState(0);
-  const [selectedData, setSelectedData] = useState(asideCategory ? asideCategory[0] : '');
+  const [selectedData, setSelectedData] = useState(
+    asideCategory ? asideCategory[0] : ""
+  );
 
   const handleMouseEnter = (index, data) => {
     setDefaultLinkIndex(index);
     setSelectedData(data);
   };
 
+  const [innerData, setInnerData] = useState(false);
+
   return (
     <>
-      {
-        asideCategory && (
-          <div className="absolute px-[50px] top-[4.2rem] left-0 bg-white flex noto-sans-200 transition-all duration-300 ease-linear w-full">
-            <aside className=" w-1/6 py-4 space-y-2">
-              {asideCategory?.map((value, idx) => (
-                <Link
-                  key={idx}
-                  onMouseEnter={() => handleMouseEnter(idx, value)}
-                  className={`block p-2 text-lg font-medium ${
-                    defaultLinkIndex === idx ? "text-blue-600" : ""
-                  }`}
-                  href="#"
-                >
-                  {value.categoryHeading}
-                </Link>
-              ))}
-            </aside>
+      {asideCategory && (
+        <motion.div
+          initial={
+            typeof window !== "undefined" &&
+            window.innerWidth > 800 && { y: -10, opacity: 0 }
+          }
+          whileInView={{ y: 0, opacity: 1 }}
+          className="absolute top-[3rem] bg-white flex flex-col md:flex-row noto-sans-200 transition-all duration-300 ease-linear w-full md:left-0 h-lvh md:h-auto md:px-10"
+        >
+          <motion.aside
+            className="absolute top-5 md:top-0 md:static md:border-r md:pr-10 md:py-4"
+            initial={
+              typeof window !== "undefined" &&
+              window.innerWidth <= 800 && { x: 300, opacity: 0 }
+            }
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ type: "just" }}
+          >
+            {asideCategory?.map((value, idx) => (
+              <Link
+                key={idx}
+                onMouseEnter={() => handleMouseEnter(idx, value)}
+                className={`block p-2 text-lg font-medium ${
+                  defaultLinkIndex === idx ? "text-blue-600" : ""
+                }`}
+                href="#"
+                onClick={() => setInnerData(true)}
+              >
+                {value.categoryHeading}
+              </Link>
+            ))}
+          </motion.aside>
+          <motion.div
+            initial={
+              typeof window !== "undefined" &&
+              window.innerWidth <= 800 && { x: 300, opacity: 0 }
+            }
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ type: "just" }}
+            className={`${
+              innerData ? "block" : "hidden"
+            } md:block absolute w-full h-[100vh] bg-white md:h-auto md:w-auto md:static z-[99]`}
+          >
             <Displaybox
               parentCategory={parentCategory}
               defaultLinkIndex={defaultLinkIndex}
               data={selectedData}
             />
-          </div>
-        )
-      }
+          </motion.div>
+        </motion.div>
+      )}
     </>
   );
 };

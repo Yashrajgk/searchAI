@@ -64,23 +64,27 @@ function Card(props) {
                 className="arrow arrow-left sm:mt-4"
               />
             )}
-            {props.imgSrc?.map((item, idx) => {
-              return (
-                <Link href={`/product/${props.title}`}>
-                  <Image
-                    src={item}
-                    alt="NA"
-                    key={idx}
-                    height={300}
-                    width={300}
-                    onClick={() => handleclick(props.id, props.category)}
-                    className={
-                      slide === idx ? "aspect-square w-[400px]" : "slide-hidden"
-                    }
-                  />
-                </Link>
-              );
-            })}
+            <div className="w-[400px] overflow-hidden">
+              {props.imgSrc?.map((item, idx) => {
+                return (
+                  <Link href={`/product/${props.title}`}>
+                    <Image
+                      src={item}
+                      alt="NA"
+                      key={idx}
+                      height={300}
+                      width={300}
+                      onClick={() => handleclick(props.id, props.category)}
+                      className={
+                        slide === idx
+                          ? "aspect-square w-full hover:scale-110 transition-all duration-300"
+                          : "slide-hidden"
+                      }
+                    />
+                  </Link>
+                );
+              })}
+            </div>
 
             {isHovered && (
               <div>
@@ -113,20 +117,18 @@ function Card(props) {
           {/* <Carousel data={props.imgSrc} className="card-img" /> */}
         </div>
         <div className="card-title">
-        <div className="pt-[15px]">{props.title}</div>
-         </div>
+          <div className="pt-[15px]">{props.title}</div>
+        </div>
         <div className="card-date text-sm text-[#757575]">{props.desc}</div>
         <div className="card-price">
-        <span className="font-medium pr-[3px] pt-[3px]">Rs.</span>
-        <h2 className="text-xl font-medium tracking-wide">
-         {props.price}
-                </h2>
+          <span className="font-medium pr-[3px] pt-[3px]">Rs.</span>
+          <h2 className="text-xl font-medium tracking-wide">{props.price}</h2>
         </div>
         <div className="card-rating">
-            {/* <img src="/svg/star-full-icon.svg" className="w-6 h-6" alt="" /> */}
+          {/* <img src="/svg/star-full-icon.svg" className="w-6 h-6" alt="" /> */}
 
-            {props.rating}
-          </div>
+          {props.rating}
+        </div>
       </div>
       {props.isPopupVisible && (
         <PopUp

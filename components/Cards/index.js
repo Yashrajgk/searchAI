@@ -172,7 +172,7 @@ function Cards() {
         </>
       )} */}
 
-      <div className="w-full sm:px-[50px] px-[20px] py-20  h-auto">
+      <div className="w-full sm:px-[50px] px-[20px]  h-auto">
         {/* <Imagechanger /> */}
       </div>
 

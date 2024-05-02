@@ -10,6 +10,7 @@ module.exports = {
       sm: "451px", //modify the screen width
       md: "800px",
       lg: "1000px",
+      "2lg": "1200px"
     },
 
     extend: {
