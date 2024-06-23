@@ -276,6 +276,7 @@ const Card = ({ data }) => {
 
             {/* Modal */}
             {modalContent && (
+              
               <div className="bg-gray-900 z-[999999] bg-opacity-30 fixed top-0 left-0 w-full h-full flex items-center justify-center ">
                 <div className="w-1/2 h-5/6 flex flex-col justify-between gap-4 bg-white rounded-3xl p-7 z-50">
                   {modalContent === "zeroCostEMI" && (
@@ -285,8 +286,10 @@ const Card = ({ data }) => {
                         Close
                       </button>
                     </>
+                    
                   )}
                   {modalContent === "inStoreRequest" && (
+                    <div className="modal-container-right">
                     <div className="bg-gray-900 z-[999999] bg-opacity-30 fixed top-0 left-0 w-full h-full flex items-center justify-center ">
                       <div className="w-1/2 h-5/6 flex flex-col justify-between gap-4 bg-white rounded-3xl p-7 z-50">
                         <div>
@@ -303,10 +306,12 @@ const Card = ({ data }) => {
                         </button>
                       </div>
                     </div>
+                    </div>
                   )}
 
                   {modalContent === "deliveryOption" && (
-                    <div className=" bg-gray-900 z-[999999] bg-opacity-30  fixed top-0 left-0 w-full h-full flex items-center justify-center ">
+                    <div className="modal-container-right">
+                    <div className=" bg-gray-900 z-[999999] bg-opacity-30  fixed top-0 left-0 right-0 w-full h-full flex items-center justify-center ">
                       <div className="  w-1/2 h-5/6  flex flex-col justify-between  gap-4 bg-white rounded-3xl p-7 z-50">
                         <div>
                           <div className="pl-7">Enter pincode:</div>
@@ -322,8 +327,10 @@ const Card = ({ data }) => {
                         </button>
                       </div>
                     </div>
+                    </div>
                   )}
                   {modalContent === "calculator" && (
+                    <div className="modal-container-right">
                     <div className="   fixed top-0 left-0 w-full h-full flex items-center justify-center ">
                       <div className="  w-1/2 h-5/6  flex flex-col justify-between  gap-4 bg-white rounded-3xl p-7 z-50">
                         <Calculation priceData={data} />
@@ -331,6 +338,7 @@ const Card = ({ data }) => {
                           Close
                         </button>
                       </div>
+                    </div>
                     </div>
                   )}
                 </div>
